@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5XT72H0KV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C5XT72H0KV');
+</script>
+<title>Free Hash Generator — MD5, SHA-1, SHA-256, SHA-512</title>
+<meta name="description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files instantly in your browser. Free, no signup, no upload.">
+<link rel="canonical" href="https://shrinkmytools.com/hash-generator.html">
+<meta property="og:title" content="Free Hash Generator">
+<meta property="og:description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes instantly in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shrinkmytools.com/hash-generator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Hash Generator",
+  "url": "https://shrinkmytools.com/hash-generator.html",
+  "description": "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or files instantly in your browser. Free, no signup, no upload.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{
+    --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
+    --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eeeef0; --bg2:#e9e9eb; --panel:#ffffff; --panel2:#f5f5f6; --border:#dcdce0;
+      --text:#1c1c1f; --muted:#6b6b72; --accent:#4f6bff; --accent2:#7b4fff;
+      --shadow: 0 10px 30px -12px rgba(30,30,35,0.15);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(127,127,140,0.16) 1px, transparent 0),
+      radial-gradient(1100px 600px at 50% -12%, rgba(127,127,140,0.10), transparent 60%);
+    background-size: 26px 26px, 100% 100%;
+    color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .back{ display:block; max-width:1100px; margin:0 auto; padding:24px 20px 0; font-size:0.85rem; color:var(--muted); text-decoration:none; }
+  .back:hover{ color:var(--text); }
+  header{ text-align:center; padding:20px 20px 20px; }
+  header h1{
+    margin:0 0 12px; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.02em;
+    background:linear-gradient(135deg, var(--text) 20%, var(--accent) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p{ margin:0 auto; color:var(--muted); max-width:520px; line-height:1.5; }
+  .layout{ max-width:900px; margin:0 auto; padding:20px; display:grid; grid-template-columns:1fr; gap:22px; }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+  .tabs{ display:flex; gap:8px; margin-bottom:16px; }
+  .tab-btn{
+    background:var(--panel2); border:1px solid var(--border); color:var(--muted); padding:8px 16px;
+    border-radius:999px; font-size:0.85rem; font-weight:700; cursor:pointer;
+  }
+  .tab-btn.active{ background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border-color:transparent; }
+  textarea{
+    width:100%; padding:14px; border-radius:10px; border:1px solid var(--border);
+    background:var(--bg2); color:var(--text); font-size:0.9rem; font-family:'SF Mono',Consolas,Monaco,monospace;
+    resize:vertical;
+  }
+  textarea:focus{ outline:none; border-color:var(--accent); }
+  #fileDropzone{
+    border:2px dashed var(--border); border-radius:14px; padding:36px 20px; text-align:center;
+    cursor:pointer; color:var(--muted); background:var(--panel2);
+  }
+  #fileDropzone:hover{ border-color:var(--accent); }
+  input[type=file]{ display:none; }
+  .hash-list{ margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+  .hash-row{
+    background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:12px 14px;
+  }
+  .hash-row .algo{ font-size:0.75rem; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.03em; margin-bottom:4px; }
+  .hash-row .value-row{ display:flex; align-items:center; gap:8px; }
+  .hash-row .value{ flex:1; font-family:'SF Mono',Consolas,Monaco,monospace; font-size:0.85rem; word-break:break-all; }
+  .icon-btn{
+    background:var(--panel); border:1px solid var(--border); color:var(--text); width:30px; height:30px;
+    border-radius:7px; cursor:pointer; font-size:0.85rem; flex-shrink:0;
+  }
+  .icon-btn:hover{ border-color:var(--accent); }
+  .content-section{ margin-top:6px; }
+  .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
+  .content-section h3{ font-size:1.02rem; margin:24px 0 10px; }
+  .content-section p, .content-section li{ color:var(--muted); font-size:0.93rem; line-height:1.7; }
+  .content-section ul{ margin:0 0 14px; padding-left:22px; }
+  .content-section strong{ color:var(--text); }
+  footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
+  footer a{ color:inherit; }
+</style>
+</head>
+<body>
+
+<a class="back" href="/">&larr; All tools</a>
+
+<header>
+  <h1>Hash Generator</h1>
+  <p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or a file — free, nothing ever uploaded.</p>
+</header>
+
+<div class="layout">
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" data-mode="text">Text</button>
+      <button class="tab-btn" data-mode="file">File</button>
+    </div>
+
+    <div id="textMode">
+      <textarea id="textInput" rows="6" placeholder="Type or paste text to hash…"></textarea>
+    </div>
+    <div id="fileMode" style="display:none;">
+      <div id="fileDropzone">
+        <strong>Click to choose a file</strong> or drag &amp; drop it here
+        <input type="file" id="fileInput">
+      </div>
+      <div id="fileName" style="margin-top:10px; font-size:0.85rem; color:var(--muted);"></div>
+    </div>
+
+    <div class="hash-list" id="hashList"></div>
+  </div>
+
+  <div class="card content-section">
+    <h2>About Hashing</h2>
+    <p>
+      A hash function takes any input — text or a file — and produces a fixed-length string that acts as a
+      unique "fingerprint" of that exact content. Even a single-character change produces a completely
+      different hash. Hashes are used to verify file integrity (confirming a download wasn't corrupted or
+      tampered with), detect duplicate content, and store passwords without keeping the plain text.
+    </p>
+    <h3>Which algorithm should I use?</h3>
+    <ul>
+      <li><strong>MD5</strong> — fast, but cryptographically broken; fine for checksums and de-duplication, not for security.</li>
+      <li><strong>SHA-1</strong> — also considered broken for security purposes (collisions have been demonstrated); still common in legacy systems and Git.</li>
+      <li><strong>SHA-256</strong> — the current standard for security-sensitive use (file verification, blockchain, password hashing pipelines).</li>
+      <li><strong>SHA-512</strong> — similar security profile to SHA-256 with a longer digest, sometimes preferred for extra margin.</li>
+    </ul>
+    <p>SHA hashes are computed using your browser's native Web Crypto API; MD5 uses a local JavaScript implementation. Nothing you type or upload here ever leaves your device.</p>
+  </div>
+</div>
+
+<footer>
+  Free, private, browser-based tools.<br>
+  <a href="/about.html">About</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+</footer>
+
+<script>
+// Compact public-domain MD5 implementation (RFC 1321), operates on a Uint8Array, returns hex string.
+function md5(bytes){
+  function rotl(x,n){ return (x<<n)|(x>>>(32-n)); }
+  function toWords(bytes){
+    const words = [];
+    for (let i = 0; i < bytes.length; i += 4) {
+      words.push((bytes[i]||0) | (bytes[i+1]||0)<<8 | (bytes[i+2]||0)<<16 | (bytes[i+3]||0)<<24);
+    }
+    return words;
+  }
+  const K = [];
+  for (let i = 0; i < 64; i++) K[i] = Math.floor(Math.abs(Math.sin(i+1)) * 4294967296);
+  const S = [7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,
+             5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
+             4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,
+             6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21];
+
+  const origLenBits = bytes.length * 8;
+  let padded = Array.from(bytes);
+  padded.push(0x80);
+  while (padded.length % 64 !== 56) padded.push(0);
+  for (let i = 0; i < 8; i++) padded.push((origLenBits / Math.pow(2, 8*i)) & 0xff);
+
+  const words = toWords(padded);
+  let a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
+
+  for (let chunk = 0; chunk < words.length; chunk += 16) {
+    let A=a0, B=b0, C=c0, D=d0;
+    for (let i = 0; i < 64; i++) {
+      let F, g;
+      if (i < 16) { F = (B & C) | (~B & D); g = i; }
+      else if (i < 32) { F = (D & B) | (~D & C); g = (5*i + 1) % 16; }
+      else if (i < 48) { F = B ^ C ^ D; g = (3*i + 5) % 16; }
+      else { F = C ^ (B | ~D); g = (7*i) % 16; }
+      F = (F + A + K[i] + (words[chunk+g]||0)) | 0;
+      A = D; D = C; C = B;
+      B = (B + rotl(F, S[i])) | 0;
+    }
+    a0 = (a0 + A) | 0; b0 = (b0 + B) | 0; c0 = (c0 + C) | 0; d0 = (d0 + D) | 0;
+  }
+
+  function toHexLE(n){
+    let hex = '';
+    for (let i = 0; i < 4; i++) {
+      hex += ((n >> (i*8)) & 0xff).toString(16).padStart(2, '0');
+    }
+    return hex;
+  }
+  return toHexLE(a0) + toHexLE(b0) + toHexLE(c0) + toHexLE(d0);
+}
+
+(function(){
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const textMode = document.getElementById('textMode');
+  const fileMode = document.getElementById('fileMode');
+  const textInput = document.getElementById('textInput');
+  const fileDropzone = document.getElementById('fileDropzone');
+  const fileInput = document.getElementById('fileInput');
+  const fileName = document.getElementById('fileName');
+  const hashList = document.getElementById('hashList');
+
+  let mode = 'text';
+  let currentFile = null;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mode = btn.dataset.mode;
+      textMode.style.display = mode === 'text' ? 'block' : 'none';
+      fileMode.style.display = mode === 'file' ? 'block' : 'none';
+      compute();
+    });
+  });
+
+  fileDropzone.addEventListener('click', () => fileInput.click());
+  fileDropzone.addEventListener('dragover', e => { e.preventDefault(); fileDropzone.style.borderColor = 'var(--accent)'; });
+  fileDropzone.addEventListener('dragleave', () => fileDropzone.style.borderColor = '');
+  fileDropzone.addEventListener('drop', e => {
+    e.preventDefault();
+    fileDropzone.style.borderColor = '';
+    if (e.dataTransfer.files[0]) { currentFile = e.dataTransfer.files[0]; onFileChosen(); }
+  });
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files[0]) { currentFile = fileInput.files[0]; onFileChosen(); }
+  });
+  function onFileChosen(){
+    fileName.textContent = `${currentFile.name} — ${(currentFile.size/1024).toFixed(1)} KB`;
+    compute();
+  }
+
+  function renderHashes(bytes){
+    hashList.innerHTML = '<div class="hash-row"><div class="algo">Computing…</div></div>';
+    Promise.all([
+      Promise.resolve(md5(bytes)),
+      crypto.subtle.digest('SHA-1', bytes).then(bufToHex),
+      crypto.subtle.digest('SHA-256', bytes).then(bufToHex),
+      crypto.subtle.digest('SHA-512', bytes).then(bufToHex),
+    ]).then(([md5Hash, sha1, sha256, sha512]) => {
+      const rows = [
+        ['MD5', md5Hash],
+        ['SHA-1', sha1],
+        ['SHA-256', sha256],
+        ['SHA-512', sha512],
+      ];
+      hashList.innerHTML = rows.map(([label, value]) => `
+        <div class="hash-row">
+          <div class="algo">${label}</div>
+          <div class="value-row">
+            <div class="value">${value}</div>
+            <button class="icon-btn copy-hash" data-value="${value}" title="Copy">⧉</button>
+          </div>
+        </div>
+      `).join('');
+      hashList.querySelectorAll('.copy-hash').forEach(btn => {
+        btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.value));
+      });
+    });
+  }
+
+  function bufToHex(buf){
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function compute(){
+    if (mode === 'text') {
+      const bytes = new TextEncoder().encode(textInput.value);
+      renderHashes(bytes);
+    } else if (currentFile) {
+      const buf = await currentFile.arrayBuffer();
+      renderHashes(new Uint8Array(buf));
+    } else {
+      hashList.innerHTML = '';
+    }
+  }
+
+  textInput.addEventListener('input', compute);
+  compute();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5XT72H0KV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C5XT72H0KV');
+</script>
+<title>Free Color Picker & Converter — HEX, RGB, HSL + Palette Generator</title>
+<meta name="description" content="Pick a color and instantly get HEX, RGB, and HSL values, plus a shade/tint ramp and matching color scheme. Free, no signup.">
+<link rel="canonical" href="https://shrinkmytools.com/color-picker.html">
+<meta property="og:title" content="Free Color Picker & Converter">
+<meta property="og:description" content="Pick a color and instantly get HEX, RGB, HSL values plus a matching palette.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shrinkmytools.com/color-picker.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Color Picker & Converter",
+  "url": "https://shrinkmytools.com/color-picker.html",
+  "description": "Pick a color and instantly get HEX, RGB, and HSL values, plus a shade/tint ramp and matching color scheme. Free, no signup.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{
+    --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
+    --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eeeef0; --bg2:#e9e9eb; --panel:#ffffff; --panel2:#f5f5f6; --border:#dcdce0;
+      --text:#1c1c1f; --muted:#6b6b72; --accent:#4f6bff; --accent2:#7b4fff;
+      --shadow: 0 10px 30px -12px rgba(30,30,35,0.15);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(127,127,140,0.16) 1px, transparent 0),
+      radial-gradient(1100px 600px at 50% -12%, rgba(127,127,140,0.10), transparent 60%);
+    background-size: 26px 26px, 100% 100%;
+    color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .back{ display:block; max-width:1100px; margin:0 auto; padding:24px 20px 0; font-size:0.85rem; color:var(--muted); text-decoration:none; }
+  .back:hover{ color:var(--text); }
+  header{ text-align:center; padding:20px 20px 20px; }
+  header h1{
+    margin:0 0 12px; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.02em;
+    background:linear-gradient(135deg, var(--text) 20%, var(--accent) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p{ margin:0 auto; color:var(--muted); max-width:520px; line-height:1.5; }
+  .layout{ max-width:900px; margin:0 auto; padding:20px; display:grid; grid-template-columns:1fr; gap:22px; }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+  .picker-row{ display:flex; gap:20px; align-items:center; flex-wrap:wrap; margin-bottom:20px; }
+  input[type=color]{ width:70px; height:70px; padding:0; border:1px solid var(--border); border-radius:14px; cursor:pointer; background:none; }
+  input[type=text]{
+    padding:10px 12px; border-radius:9px; border:1px solid var(--border);
+    background:var(--bg2); color:var(--text); font-size:0.95rem; font-family:'SF Mono',Consolas,Monaco,monospace; width:140px;
+  }
+  input[type=text]:focus{ outline:none; border-color:var(--accent); }
+  .value-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:24px; }
+  .value-box{
+    background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:12px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .value-box .label{ font-size:0.72rem; color:var(--muted); font-weight:700; text-transform:uppercase; }
+  .value-box .value{ font-family:'SF Mono',Consolas,Monaco,monospace; font-size:0.9rem; }
+  .icon-btn{ background:none; border:none; color:var(--muted); cursor:pointer; font-size:0.9rem; }
+  .icon-btn:hover{ color:var(--accent); }
+  h3{ font-size:0.95rem; margin:20px 0 10px; color:var(--text); }
+  .swatch-row{ display:flex; gap:8px; margin-bottom:8px; }
+  .swatch{ flex:1; height:52px; border-radius:8px; cursor:pointer; border:1px solid var(--border); position:relative; }
+  .swatch:hover::after{ content:attr(data-hex); position:absolute; bottom:-20px; left:0; font-size:0.65rem; color:var(--muted); white-space:nowrap; }
+  .content-section{ margin-top:6px; }
+  .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
+  .content-section p, .content-section li{ color:var(--muted); font-size:0.93rem; line-height:1.7; }
+  .content-section ul{ margin:0 0 14px; padding-left:22px; }
+  .content-section strong{ color:var(--text); }
+  footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
+  footer a{ color:inherit; }
+</style>
+</head>
+<body>
+
+<a class="back" href="/">&larr; All tools</a>
+
+<header>
+  <h1>Color Picker &amp; Converter</h1>
+  <p>Pick a color to get HEX, RGB, and HSL values instantly, plus a shade ramp and matching color scheme.</p>
+</header>
+
+<div class="layout">
+  <div class="card">
+    <div class="picker-row">
+      <input type="color" id="colorPicker" value="#6d8bff">
+      <input type="text" id="hexInput" value="#6d8bff">
+    </div>
+    <div class="value-grid">
+      <div class="value-box"><span class="label">HEX</span><span class="value" id="valHex"></span><button class="icon-btn copy" data-target="valHex">⧉</button></div>
+      <div class="value-box"><span class="label">RGB</span><span class="value" id="valRgb"></span><button class="icon-btn copy" data-target="valRgb">⧉</button></div>
+      <div class="value-box"><span class="label">HSL</span><span class="value" id="valHsl"></span><button class="icon-btn copy" data-target="valHsl">⧉</button></div>
+    </div>
+
+    <h3>Shades &amp; Tints</h3>
+    <div class="swatch-row" id="shadeRow"></div>
+
+    <h3>Matching Colors (Complementary &amp; Analogous)</h3>
+    <div class="swatch-row" id="schemeRow"></div>
+  </div>
+
+  <div class="card content-section">
+    <h2>About Color Formats</h2>
+    <ul>
+      <li><strong>HEX</strong> — a 6-digit code (e.g. <code>#6D8BFF</code>) used almost universally in CSS and design tools.</li>
+      <li><strong>RGB</strong> — Red, Green, Blue values from 0-255 each; the native format for screens, since pixels are literally lit by mixing red, green, and blue light.</li>
+      <li><strong>HSL</strong> — Hue, Saturation, Lightness; more intuitive for adjusting a color (e.g. "make it lighter" is just raising the Lightness value) without recalculating RGB math by hand.</li>
+    </ul>
+    <p>
+      The shade/tint ramp shows the same hue mixed with black (shades) and white (tints) — useful for building
+      a consistent UI color scale. The matching colors show the complementary color (opposite on the color
+      wheel) and two analogous colors (neighboring hues), a quick way to find colors that pair well together.
+    </p>
+  </div>
+</div>
+
+<footer>
+  Free, private, browser-based tools.<br>
+  <a href="/about.html">About</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+</footer>
+
+<script>
+(function(){
+  const colorPicker = document.getElementById('colorPicker');
+  const hexInput = document.getElementById('hexInput');
+  const valHex = document.getElementById('valHex');
+  const valRgb = document.getElementById('valRgb');
+  const valHsl = document.getElementById('valHsl');
+  const shadeRow = document.getElementById('shadeRow');
+  const schemeRow = document.getElementById('schemeRow');
+
+  function hexToRgb(hex){
+    const m = hex.replace('#','').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+    if (!m) return null;
+    return { r: parseInt(m[1],16), g: parseInt(m[2],16), b: parseInt(m[3],16) };
+  }
+  function rgbToHex(r,g,b){
+    return '#' + [r,g,b].map(x => Math.max(0,Math.min(255,Math.round(x))).toString(16).padStart(2,'0')).join('');
+  }
+  function rgbToHsl(r,g,b){
+    r/=255; g/=255; b/=255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    let h, s, l = (max+min)/2;
+    if (max === min) { h = s = 0; }
+    else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch(max){
+        case r: h = (g-b)/d + (g<b?6:0); break;
+        case g: h = (b-r)/d + 2; break;
+        case b: h = (r-g)/d + 4; break;
+      }
+      h *= 60;
+    }
+    return { h: Math.round(h), s: Math.round(s*100), l: Math.round(l*100) };
+  }
+  function hslToRgb(h,s,l){
+    h/=360; s/=100; l/=100;
+    let r,g,b;
+    if (s === 0) { r=g=b=l; }
+    else {
+      const hue2rgb = (p,q,t) => {
+        if (t<0) t+=1; if (t>1) t-=1;
+        if (t<1/6) return p+(q-p)*6*t;
+        if (t<1/2) return q;
+        if (t<2/3) return p+(q-p)*(2/3-t)*6;
+        return p;
+      };
+      const q = l < 0.5 ? l*(1+s) : l+s-l*s;
+      const p = 2*l-q;
+      r = hue2rgb(p,q,h+1/3);
+      g = hue2rgb(p,q,h);
+      b = hue2rgb(p,q,h-1/3);
+    }
+    return { r: r*255, g: g*255, b: b*255 };
+  }
+
+  function update(hex){
+    hex = hex.startsWith('#') ? hex : '#' + hex;
+    const rgb = hexToRgb(hex);
+    if (!rgb) return;
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+    colorPicker.value = hex;
+    hexInput.value = hex.toUpperCase();
+    valHex.textContent = hex.toUpperCase();
+    valRgb.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    valHsl.textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+    // Shades (mix with black) and tints (mix with white)
+    shadeRow.innerHTML = '';
+    const steps = [-40,-25,-10, 0, 10, 25, 40];
+    steps.forEach(step => {
+      let l = Math.max(0, Math.min(100, hsl.l + step));
+      const c = hslToRgb(hsl.h, hsl.s, l);
+      const shex = rgbToHex(c.r, c.g, c.b);
+      const div = document.createElement('div');
+      div.className = 'swatch';
+      div.style.background = shex;
+      div.dataset.hex = shex;
+      div.title = shex;
+      div.addEventListener('click', () => update(shex));
+      shadeRow.appendChild(div);
+    });
+
+    // Complementary + analogous
+    schemeRow.innerHTML = '';
+    const angles = [0, -30, 30, 180, 150, 210];
+    angles.forEach(angle => {
+      const h = ((hsl.h + angle) % 360 + 360) % 360;
+      const c = hslToRgb(h, hsl.s, hsl.l);
+      const shex = rgbToHex(c.r, c.g, c.b);
+      const div = document.createElement('div');
+      div.className = 'swatch';
+      div.style.background = shex;
+      div.dataset.hex = shex;
+      div.title = shex;
+      div.addEventListener('click', () => update(shex));
+      schemeRow.appendChild(div);
+    });
+  }
+
+  colorPicker.addEventListener('input', () => update(colorPicker.value));
+  hexInput.addEventListener('change', () => update(hexInput.value));
+  document.querySelectorAll('.icon-btn.copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById(btn.dataset.target).textContent);
+    });
+  });
+
+  update('#6d8bff');
+})();
+</script>
+
+</body>
+</html>
