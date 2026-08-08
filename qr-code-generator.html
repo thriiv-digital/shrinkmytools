@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free QR Code Generator — Create & Download QR Codes Instantly</title>
+<meta name="description" content="Generate a custom QR code from any link or text and download it as PNG or SVG. Free, no signup, no watermark, works entirely in your browser.">
+<link rel="canonical" href="https://shrinkmytools.com/qr-code-generator.html">
+<meta property="og:title" content="Free QR Code Generator">
+<meta property="og:description" content="Generate a custom QR code from any link or text and download it as PNG or SVG. Free, no signup, no watermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shrinkmytools.com/qr-code-generator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator",
+  "url": "https://shrinkmytools.com/qr-code-generator.html",
+  "description": "Generate a custom QR code from any link or text and download it as PNG or SVG. Free, no signup, no watermark, works entirely in your browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{
+    --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
+    --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --accent-hover:#597af5;
+    --good:#3ecf8e; --good-bg:rgba(62,207,142,0.12);
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eeeef0; --bg2:#e9e9eb; --panel:#ffffff; --panel2:#f5f5f6; --border:#dcdce0;
+      --text:#1c1c1f; --muted:#6b6b72; --accent:#4f6bff; --accent2:#7b4fff; --accent-hover:#3d58e8;
+      --good:#1f9d6d; --good-bg:rgba(31,157,109,0.1);
+      --shadow: 0 10px 30px -12px rgba(30,30,35,0.15);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(127,127,140,0.16) 1px, transparent 0),
+      radial-gradient(1100px 600px at 50% -12%, rgba(127,127,140,0.10), transparent 60%);
+    background-size: 26px 26px, 100% 100%;
+    color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .back{ display:block; max-width:1100px; margin:0 auto; padding:24px 20px 0; font-size:0.85rem; color:var(--muted); text-decoration:none; }
+  .back:hover{ color:var(--text); }
+  header{ text-align:center; padding:20px 20px 28px; }
+  header h1{
+    margin:0 0 12px; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.02em;
+    background:linear-gradient(135deg, var(--text) 20%, var(--accent) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p{ margin:0 auto; color:var(--muted); max-width:520px; line-height:1.5; }
+  .layout{ max-width:920px; margin:0 auto; padding:20px; display:grid; grid-template-columns:1fr; gap:22px; }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+  .generator{ display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:start; }
+  @media (max-width:700px){ .generator{ grid-template-columns:1fr; } }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-size:0.78rem; color:var(--muted); margin-bottom:6px; font-weight:600; }
+  input[type=text], input[type=color], select, textarea{
+    width:100%; padding:10px 12px; border-radius:9px; border:1px solid var(--border);
+    background:var(--bg2); color:var(--text); font-size:0.95rem; transition:.15s; font-family:inherit;
+  }
+  input[type=text]:focus, textarea:focus{ outline:none; border-color:var(--accent); }
+  .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .color-row{ display:flex; align-items:center; gap:10px; }
+  input[type=color]{ width:44px; height:36px; padding:2px; cursor:pointer; }
+  .slider-row{ display:flex; align-items:center; gap:10px; }
+  input[type=range]{ flex:1; -webkit-appearance:none; height:6px; border-radius:999px; background:linear-gradient(90deg, var(--accent), var(--accent2)); }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:#fff; border:2px solid var(--accent); cursor:pointer; }
+  .preview-panel{ display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .qr-frame{
+    background:#fff; border-radius:16px; padding:20px; display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow); min-height:220px; min-width:220px;
+  }
+  .qr-frame canvas{ display:block; max-width:100%; height:auto; }
+  .btn{
+    background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border:none;
+    padding:11px 20px; border-radius:10px; font-size:0.92rem; cursor:pointer; font-weight:700;
+    transition:.15s; box-shadow:0 6px 16px -6px rgba(109,139,255,0.55);
+  }
+  .btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+  .btn.secondary{ background:var(--panel2); border:1px solid var(--border); color:var(--text); box-shadow:none; }
+  .download-row{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .content-section{ margin-top:6px; }
+  .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
+  .content-section h3{ font-size:1.02rem; margin:24px 0 10px; }
+  .content-section p, .content-section li{ color:var(--muted); font-size:0.93rem; line-height:1.7; }
+  .content-section ul{ margin:0 0 14px; padding-left:22px; }
+  .content-section strong{ color:var(--text); }
+  footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
+  footer a{ color:inherit; }
+</style>
+</head>
+<body>
+
+<a class="back" href="/">&larr; All tools</a>
+
+<header>
+  <h1>QR Code Generator</h1>
+  <p>Turn any link or text into a QR code — customize the color and download instantly. Free, no signup, no watermark.</p>
+</header>
+
+<div class="layout">
+  <div class="card">
+    <div class="generator">
+      <div>
+        <div class="field">
+          <label for="qrText">Link or text</label>
+          <textarea id="qrText" rows="3" placeholder="https://example.com">https://shrinkmytools.com</textarea>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="fgColor">Foreground color</label>
+            <div class="color-row">
+              <input type="color" id="fgColor" value="#141517">
+            </div>
+          </div>
+          <div class="field">
+            <label for="bgColor">Background color</label>
+            <div class="color-row">
+              <input type="color" id="bgColor" value="#ffffff">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ecLevel">Error correction (higher = more scan-resistant, denser code)</label>
+          <select id="ecLevel">
+            <option value="L">Low</option>
+            <option value="M" selected>Medium</option>
+            <option value="Q">Quartile</option>
+            <option value="H">High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="qrSize">Size (<span id="qrSizeVal">400</span>px)</label>
+          <div class="slider-row">
+            <input type="range" id="qrSize" min="150" max="1000" step="10" value="400">
+          </div>
+        </div>
+      </div>
+      <div class="preview-panel">
+        <div class="qr-frame"><canvas id="qrCanvas" width="220" height="220"></canvas></div>
+        <div class="download-row">
+          <button class="btn" id="downloadPng">Download PNG</button>
+          <button class="btn secondary" id="downloadSvg">Download SVG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card content-section">
+    <h2>About QR Codes</h2>
+    <p>
+      A QR (Quick Response) code is a two-dimensional barcode that can store URLs, text, contact details, Wi-Fi
+      credentials, and more — readable instantly by any modern phone camera. They're used everywhere from
+      restaurant menus and business cards to product packaging and event tickets, because they remove the
+      friction of typing out a long link.
+    </p>
+    <h3>Choosing an error correction level</h3>
+    <p>
+      QR codes include built-in redundancy so they still scan even if partially damaged, dirty, or obscured
+      (for example, by a logo placed in the middle). Higher error correction means the code can tolerate more
+      damage, but produces a visually denser pattern:
+    </p>
+    <ul>
+      <li><strong>Low</strong> — tolerates about 7% damage. Use for clean digital displays.</li>
+      <li><strong>Medium</strong> — tolerates about 15% damage. Good default for most uses.</li>
+      <li><strong>Quartile</strong> — tolerates about 25% damage. Good for print materials that may get worn.</li>
+      <li><strong>High</strong> — tolerates about 30% damage. Best if you plan to place a logo over the center.</li>
+    </ul>
+    <h3>Tips for reliable scanning</h3>
+    <ul>
+      <li>Keep strong contrast between foreground and background colors — avoid similar shades.</li>
+      <li>Don't shrink a printed QR code below about 2cm × 2cm, or distant scanning may fail.</li>
+      <li>Always test your QR code with a real phone camera before printing it at scale.</li>
+      <li>Keep a quiet margin (blank space) around the code — most generators, including this one, include it automatically.</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  Free, private, browser-based tools.<br>
+  <a href="/about.html">About</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+(function(){
+  const qrText = document.getElementById('qrText');
+  const fgColor = document.getElementById('fgColor');
+  const bgColor = document.getElementById('bgColor');
+  const ecLevel = document.getElementById('ecLevel');
+  const qrSize = document.getElementById('qrSize');
+  const qrSizeVal = document.getElementById('qrSizeVal');
+  const canvas = document.getElementById('qrCanvas');
+  const ctx = canvas.getContext('2d');
+  const downloadPngBtn = document.getElementById('downloadPng');
+  const downloadSvgBtn = document.getElementById('downloadSvg');
+
+  let currentQr = null;
+
+  function render(){
+    const text = qrText.value.trim() || ' ';
+    const size = parseInt(qrSize.value, 10);
+    qrSizeVal.textContent = size;
+
+    let qr;
+    try {
+      qr = qrcode(0, ecLevel.value);
+      qr.addData(text);
+      qr.make();
+    } catch (err) {
+      // Auto type-number 0 can fail for very long text at low EC levels; retry with a higher type number.
+      qr = qrcode(20, ecLevel.value);
+      qr.addData(text);
+      qr.make();
+    }
+    currentQr = qr;
+
+    const count = qr.getModuleCount();
+    const margin = 4;
+    const cell = size / (count + margin * 2);
+
+    canvas.width = size;
+    canvas.height = size;
+    ctx.fillStyle = bgColor.value;
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = fgColor.value;
+    for (let row = 0; row < count; row++) {
+      for (let col = 0; col < count; col++) {
+        if (qr.isDark(row, col)) {
+          ctx.fillRect((col + margin) * cell, (row + margin) * cell, cell + 0.5, cell + 0.5);
+        }
+      }
+    }
+  }
+
+  function buildSvg(){
+    const size = parseInt(qrSize.value, 10);
+    const count = currentQr.getModuleCount();
+    const margin = 4;
+    const cell = size / (count + margin * 2);
+    let rects = '';
+    for (let row = 0; row < count; row++) {
+      for (let col = 0; col < count; col++) {
+        if (currentQr.isDark(row, col)) {
+          const x = (col + margin) * cell;
+          const y = (row + margin) * cell;
+          rects += `<rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${(cell+0.5).toFixed(2)}" height="${(cell+0.5).toFixed(2)}" fill="${fgColor.value}"/>`;
+        }
+      }
+    }
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><rect width="${size}" height="${size}" fill="${bgColor.value}"/>${rects}</svg>`;
+  }
+
+  [qrText, fgColor, bgColor, ecLevel, qrSize].forEach(el => {
+    el.addEventListener('input', render);
+  });
+
+  downloadPngBtn.addEventListener('click', () => {
+    canvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'qr-code.png';
+      a.click();
+    }, 'image/png');
+  });
+
+  downloadSvgBtn.addEventListener('click', () => {
+    const svg = buildSvg();
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'qr-code.svg';
+    a.click();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
