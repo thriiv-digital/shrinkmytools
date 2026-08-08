@@ -3,23 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free PDF Merge & Split Tool — Combine or Split PDFs Online</title>
-<meta name="description" content="Merge multiple PDFs into one, or split a PDF into individual pages — free, no signup, no upload, entirely in your browser.">
+<title>Free PDF Merge, Split & Compress Tool — Online, No Upload</title>
+<meta name="description" content="Merge, split, or compress PDFs free in your browser. No signup, no upload — combine files, extract pages, or shrink file size instantly.">
 <link rel="canonical" href="https://shrinkmytools.com/pdf-tools.html">
-<meta property="og:title" content="Free PDF Merge & Split Tool">
-<meta property="og:description" content="Merge multiple PDFs into one, or split a PDF into individual pages — free, no signup, no upload.">
+<meta property="og:title" content="Free PDF Merge, Split & Compress Tool">
+<meta property="og:description" content="Merge, split, or compress PDFs free in your browser. No signup, no upload.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/pdf-tools.html">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "PDF Merge & Split",
+  "name": "PDF Merge, Split & Compress",
   "url": "https://shrinkmytools.com/pdf-tools.html",
-  "description": "Merge multiple PDFs into one, or split a PDF into individual pages — free, no signup, no upload, entirely in your browser.",
+  "description": "Merge multiple PDFs into one, split a PDF into individual pages, or compress a PDF to reduce file size — free, no signup, no upload, entirely in your browser.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any (runs in web browser)",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Merge multiple PDFs into one file",
+    "Split a PDF into individual pages",
+    "Extract a specific page range from a PDF",
+    "Compress a PDF using WebAssembly mozjpeg compression",
+    "100% client-side — no file is ever uploaded"
+  ]
 }
 </script>
 <style>
@@ -109,6 +116,9 @@
   .radio-row label{ display:flex; align-items:center; gap:6px; font-size:0.88rem; color:var(--text); font-weight:500; }
   .status{ margin-top:16px; font-size:0.88rem; color:var(--muted); }
   .status.good{ color:var(--good); }
+  .progress-wrap{ flex:1; min-width:140px; height:8px; border-radius:999px; background:var(--panel2); overflow:hidden; display:none; }
+  .progress-wrap.active{ display:block; }
+  .progress-bar{ height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent2)); transition:width .2s; }
   .hint{ font-size:0.78rem; color:var(--muted); margin-top:16px; line-height:1.5; }
   .content-section{ margin-top:6px; }
   .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
@@ -125,14 +135,15 @@
 <a class="back" href="/">&larr; All tools</a>
 
 <header>
-  <h1>PDF Merge &amp; Split</h1>
-  <p>Combine multiple PDFs into one file, or split a PDF into individual pages — free, no signup, nothing ever uploaded.</p>
+  <h1>PDF Merge, Split &amp; Compress</h1>
+  <p>Combine multiple PDFs, split one into pages, or shrink file size — free, no signup, nothing ever uploaded.</p>
 </header>
 
 <div class="layout">
   <div class="tabs">
     <button class="tab-btn active" data-tab="merge">Merge PDFs</button>
     <button class="tab-btn" data-tab="split">Split PDF</button>
+    <button class="tab-btn" data-tab="compress">Compress PDF</button>
   </div>
 
   <div class="card">
@@ -177,29 +188,83 @@
       <div class="status" id="splitStatus"></div>
     </div>
 
+    <div class="tab-panel" id="compressPanel">
+      <div id="compressDropzone">
+        <span class="icon">📎</span>
+        <strong>Click to choose a PDF</strong> or drag &amp; drop it here<br>
+        <span class="hint" style="margin:0;">One file at a time</span>
+        <input type="file" id="compressFileInput" accept="application/pdf">
+      </div>
+      <div id="compressInfo" class="status"></div>
+
+      <div id="compressOptions" style="display:none;">
+        <div class="field">
+          <label for="compressDpi">Rasterization quality</label>
+          <select id="compressDpi">
+            <option value="96">Low (96 DPI) — smallest file, blurrier text/images</option>
+            <option value="150" selected>Medium (150 DPI) — good balance</option>
+            <option value="200">High (200 DPI) — larger file, sharper</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="compressQuality">JPEG quality (<span id="compressQualityVal">70</span>%)</label>
+          <div class="slider-row">
+            <input type="range" id="compressQuality" min="20" max="95" value="70">
+          </div>
+        </div>
+        <div class="field" style="display:flex; align-items:center; gap:8px;">
+          <input type="checkbox" id="compressHqMode" checked>
+          <label for="compressHqMode" style="margin:0;">High-quality compression <span id="compressHqStatus" class="hint" style="margin:0 0 0 4px;">(loading…)</span></label>
+        </div>
+        <p class="hint">
+          <strong>Important:</strong> this works by converting each page into a compressed image, which shrinks
+          file size dramatically for scanned documents or image-heavy PDFs — but it also means text is no longer
+          selectable or searchable afterward. If your PDF is mostly text and you need to keep it selectable,
+          use <strong>Merge</strong> or <strong>Split</strong> instead, which never touch page content.
+        </p>
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="compressBtn" disabled>Compress PDF</button>
+        <button class="btn secondary" id="compressClearBtn" disabled>Clear</button>
+        <div class="progress-wrap" id="compressProgressWrap"><div class="progress-bar" id="compressProgressBar"></div></div>
+      </div>
+      <div class="status" id="compressStatus"></div>
+    </div>
+
     <p class="hint">Everything happens locally on your device using WebAssembly — your PDFs are never uploaded anywhere.</p>
   </div>
 
   <div class="card content-section">
-    <h2>About Merging &amp; Splitting PDFs</h2>
+    <h2>About Merging, Splitting &amp; Compressing PDFs</h2>
     <p>
       Combining and splitting PDFs are two of the most common document tasks — merging separate scanned pages
       or reports into a single file to send, or pulling specific pages out of a larger document without
       re-scanning anything. Both are simple structural operations (no re-rendering or quality loss involved),
       which is exactly why they can run entirely in your browser instead of needing a server.
     </p>
-    <h3>How it works</h3>
+    <h3>How Merge &amp; Split work</h3>
     <p>
-      This tool uses a WebAssembly-powered PDF library to read each file's internal page structure, then copies
+      These use a WebAssembly-powered PDF library to read each file's internal page structure, then copy
       the selected pages into a new PDF document — byte for byte, with no re-compression or quality loss. Text
       stays selectable, images stay at full resolution, and formatting is preserved exactly as it was in the
       original file.
+    </p>
+    <h3>How Compress works — and when to use it</h3>
+    <p>
+      Compress takes a fundamentally different approach: each page is rendered to an image and re-saved using
+      a real WebAssembly build of mozjpeg (the same encoder behind tools like Google's Squoosh) at a quality
+      level you control. This is extremely effective for <strong>scanned documents and image-heavy PDFs</strong>,
+      which are almost always the source of huge file sizes — but it comes with a trade-off: text on the page
+      is no longer selectable or searchable afterward, since it's now part of an image. If your PDF is mostly
+      typed text and you need to keep it selectable, skip Compress and use Merge/Split, which never touch page content.
     </p>
     <h3>Tips</h3>
     <ul>
       <li>When merging, files are combined in the order shown in the list — use the up/down arrows to reorder before merging.</li>
       <li>Page ranges for splitting are 1-indexed (page 1 is the first page) and support both individual pages and ranges, e.g. <strong>1-3,5,8-10</strong>.</li>
-      <li>Password-protected PDFs can't be processed until the password is removed first.</li>
+      <li>For compressing, start with Medium (150 DPI) and 70% quality — it's usually the sweet spot between file size and legibility.</li>
+      <li>Password-protected PDFs can't be processed by any of these tools until the password is removed first.</li>
     </ul>
   </div>
 </div>
@@ -210,11 +275,50 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "wasm-feature-detect": "https://cdn.jsdelivr.net/npm/wasm-feature-detect@1.6.1/dist/esm/index.js"
+  }
+}
+</script>
+<script type="module">
+  // Real mozjpeg WASM encoder (same as Squoosh) for better compression than the browser's built-in JPEG encoder.
+  // Falls back to the browser's built-in canvas encoder if this fails to load.
+  window.__hq = { ready: false };
+  (async () => {
+    try {
+      const { default: encodeJpeg } = await import('https://cdn.jsdelivr.net/npm/@jsquash/jpeg@1.4.0/encode.js');
+      window.__hq.encodeJpeg = encodeJpeg;
+      window.__hq.ready = true;
+      window.dispatchEvent(new Event('hq-codecs-ready'));
+    } catch (err) {
+      console.warn('High-quality codec failed to load, falling back to browser encoder:', err);
+      window.dispatchEvent(new Event('hq-codecs-failed'));
+    }
+  })();
+</script>
 <script>
 (function(){
+  // pdf.js requires a worker script; CDN scripts can't be used directly via new Worker(url) due to
+  // cross-origin restrictions, so fetch it and load it via a same-origin blob URL instead.
+  let workerReadyPromise = null;
+  function ensurePdfJsWorker(){
+    if (!workerReadyPromise) {
+      workerReadyPromise = fetch('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js')
+        .then(r => r.text())
+        .then(text => {
+          const blobUrl = URL.createObjectURL(new Blob([text], { type: 'application/javascript' }));
+          pdfjsLib.GlobalWorkerOptions.workerSrc = blobUrl;
+        });
+    }
+    return workerReadyPromise;
+  }
+
   // ---- Tabs ----
   const tabBtns = document.querySelectorAll('.tab-btn');
-  const panels = { merge: document.getElementById('mergePanel'), split: document.getElementById('splitPanel') };
+  const panels = { merge: document.getElementById('mergePanel'), split: document.getElementById('splitPanel'), compress: document.getElementById('compressPanel') };
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       tabBtns.forEach(b => b.classList.remove('active'));
@@ -443,6 +547,138 @@
       splitStatus.textContent = 'Something went wrong splitting this file.';
     }
     splitBtn.disabled = false;
+  });
+
+  // ---- Compress ----
+  const compressDropzone = document.getElementById('compressDropzone');
+  const compressFileInput = document.getElementById('compressFileInput');
+  const compressInfo = document.getElementById('compressInfo');
+  const compressOptions = document.getElementById('compressOptions');
+  const compressDpi = document.getElementById('compressDpi');
+  const compressQuality = document.getElementById('compressQuality');
+  const compressQualityVal = document.getElementById('compressQualityVal');
+  const compressHqMode = document.getElementById('compressHqMode');
+  const compressHqStatus = document.getElementById('compressHqStatus');
+  const compressBtn = document.getElementById('compressBtn');
+  const compressClearBtn = document.getElementById('compressClearBtn');
+  const compressStatus = document.getElementById('compressStatus');
+  const compressProgressWrap = document.getElementById('compressProgressWrap');
+  const compressProgressBar = document.getElementById('compressProgressBar');
+
+  let compressFile = null;
+
+  window.addEventListener('hq-codecs-ready', () => { compressHqStatus.textContent = '(mozjpeg loaded)'; });
+  window.addEventListener('hq-codecs-failed', () => {
+    compressHqStatus.textContent = '(unavailable — using browser encoder)';
+    compressHqMode.checked = false;
+    compressHqMode.disabled = true;
+  });
+
+  compressQuality.addEventListener('input', () => compressQualityVal.textContent = compressQuality.value);
+
+  setupDropzone(compressDropzone, compressFileInput, async fileList => {
+    const file = Array.from(fileList).find(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+    if (!file) return;
+    compressFile = file;
+    try {
+      const { PDFDocument } = PDFLib;
+      const bytes = await file.arrayBuffer();
+      const doc = await PDFDocument.load(bytes);
+      const pageCount = doc.getPageCount();
+      compressInfo.textContent = `${file.name} — ${pageCount} page${pageCount === 1 ? '' : 's'} — ${formatBytes(file.size)}`;
+      compressInfo.className = 'status good';
+      compressOptions.style.display = 'block';
+      compressBtn.disabled = false;
+      compressClearBtn.disabled = false;
+    } catch (err) {
+      console.error(err);
+      compressInfo.textContent = 'Could not read this PDF — it may be password-protected or corrupted.';
+      compressInfo.className = 'status';
+    }
+  });
+
+  compressClearBtn.addEventListener('click', () => {
+    compressFile = null;
+    compressInfo.textContent = '';
+    compressOptions.style.display = 'none';
+    compressBtn.disabled = true;
+    compressClearBtn.disabled = true;
+    compressStatus.textContent = '';
+    compressProgressWrap.classList.remove('active');
+    compressFileInput.value = '';
+  });
+
+  compressBtn.addEventListener('click', async () => {
+    if (!compressFile) return;
+    compressBtn.disabled = true;
+    compressStatus.textContent = 'Loading…';
+    compressStatus.className = 'status';
+    compressProgressWrap.classList.add('active');
+    compressProgressBar.style.width = '0%';
+
+    try {
+      await ensurePdfJsWorker();
+      const { PDFDocument } = PDFLib;
+      const useHq = compressHqMode.checked && window.__hq && window.__hq.ready;
+      const dpi = parseInt(compressDpi.value, 10);
+      const quality = parseInt(compressQuality.value, 10) / 100;
+      const originalSize = compressFile.size;
+      const baseName = compressFile.name.replace(/\.pdf$/i, '');
+
+      const srcBytes = await compressFile.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: srcBytes }).promise;
+      const outDoc = await PDFDocument.create();
+
+      for (let i = 1; i <= pdf.numPages; i++) {
+        compressStatus.textContent = `Compressing page ${i} of ${pdf.numPages}…`;
+        const p = await pdf.getPage(i);
+        const viewport = p.getViewport({ scale: dpi / 72 });
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(viewport.width);
+        canvas.height = Math.round(viewport.height);
+        const ctx = canvas.getContext('2d');
+        await p.render({ canvasContext: ctx, viewport }).promise;
+
+        let jpegBytes;
+        if (useHq) {
+          try {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const buffer = await window.__hq.encodeJpeg(imageData, { quality: Math.round(quality * 100) });
+            jpegBytes = new Uint8Array(buffer);
+          } catch (err) {
+            console.warn('HQ encode failed for page', i, '— falling back to canvas encoder:', err);
+          }
+        }
+        if (!jpegBytes) {
+          const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', quality));
+          jpegBytes = new Uint8Array(await blob.arrayBuffer());
+        }
+
+        const jpegImage = await outDoc.embedJpg(jpegBytes);
+        const outPage = outDoc.addPage([canvas.width * 72 / dpi, canvas.height * 72 / dpi]);
+        outPage.drawImage(jpegImage, { x: 0, y: 0, width: outPage.getWidth(), height: outPage.getHeight() });
+
+        compressProgressBar.style.width = Math.round((i / pdf.numPages) * 100) + '%';
+      }
+
+      const outBytes = await outDoc.save();
+      const blob = new Blob([outBytes], { type: 'application/pdf' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${baseName}-compressed.pdf`;
+      a.click();
+
+      const pct = originalSize > 0 ? Math.round((1 - outBytes.length / originalSize) * 100) : 0;
+      compressStatus.textContent = pct > 0
+        ? `Done — ${formatBytes(originalSize)} → ${formatBytes(outBytes.length)} (−${pct}%).`
+        : `Done — ${formatBytes(originalSize)} → ${formatBytes(outBytes.length)}. This PDF didn't shrink — it's likely already text-based with few images, so rasterizing adds overhead. Try Merge/Split instead to keep it as-is.`;
+      compressStatus.className = 'status good';
+    } catch (err) {
+      console.error(err);
+      compressStatus.textContent = 'Something went wrong compressing this file — make sure it\'s a valid, non-password-protected PDF.';
+    }
+    setTimeout(() => compressProgressWrap.classList.remove('active'), 400);
+    compressBtn.disabled = false;
   });
 })();
 </script>
