@@ -1,0 +1,42 @@
+# Shrink My Tools
+
+> Shrink My Tools is a free collection of browser-based utilities — image, PDF, developer, calculator, and text/design tools. Every tool runs entirely client-side using JavaScript and WebAssembly: no file or text is ever uploaded to a server, no signup is required, and there are no usage limits or watermarks.
+
+All tools are static HTML/JS pages, free to use, with no API keys, accounts, or rate limits. Processing happens locally in the visitor's browser (Canvas API, Web Crypto API, and WebAssembly builds of libwebp, mozjpeg, libheif, and pdf.js/pdf-lib).
+
+## Image Tools
+
+- [Image Resizer & Converter](https://shrinkmypics.com/): Resize and convert images to WebP, JPG, or PNG.
+- [HEIC to JPG/PNG Converter](https://shrinkmytools.com/heic-converter.html): Convert iPhone HEIC/HEIF photos to JPG or PNG, batch supported.
+- [Favicon Generator](https://shrinkmytools.com/favicon-generator.html): Generate every standard favicon size (16x16 to 512x512) from one image.
+- [Watermark Adder](https://shrinkmytools.com/watermark-adder.html): Add a text watermark (color, size, opacity, position, tiling) to one or many photos.
+
+## Developer Tools
+
+- [JSON Formatter & Validator](https://shrinkmytools.com/json-formatter.html): Beautify, minify, and validate JSON with precise error locations.
+- [Hash Generator](https://shrinkmytools.com/hash-generator.html): Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or a file.
+- [Case Converter](https://shrinkmytools.com/case-converter.html): Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case, or CONSTANT_CASE.
+
+## Calculators & Converters
+
+- [Unit Converter](https://shrinkmytools.com/unit-converter.html): Convert length, weight, temperature, volume, and area units.
+- [Loan & Mortgage Calculator](https://shrinkmytools.com/loan-mortgage-calculator.html): Estimate monthly payment, total interest, and a full amortization schedule.
+- [BMI Calculator](https://shrinkmytools.com/bmi-calculator.html): Calculate Body Mass Index using metric or imperial units.
+- [Percentage Calculator](https://shrinkmytools.com/percentage-calculator.html): Percentages, percentage change, increase, and decrease calculations.
+- [Age Calculator](https://shrinkmytools.com/age-calculator.html): Exact age in years/months/days, or days until any future date.
+
+## Text, Design & Generators
+
+- [QR Code Generator](https://shrinkmytools.com/qr-code-generator.html): Create a custom QR code from any link or text, download as PNG or SVG.
+- [PDF Merge, Split & Compress](https://shrinkmytools.com/pdf-tools.html): Combine multiple PDFs, split one into pages, or compress file size.
+- [Word & Character Counter](https://shrinkmytools.com/word-counter.html): Live word count, character count, sentence count, and reading time.
+- [Password Generator](https://shrinkmytools.com/password-generator.html): Generate cryptographically random passwords with a strength meter.
+- [Color Picker & Converter](https://shrinkmytools.com/color-picker.html): Convert between HEX/RGB/HSL, generate shades/tints and matching color schemes.
+- [Lorem Ipsum Generator](https://shrinkmytools.com/lorem-ipsum-generator.html): Generate placeholder text by paragraphs, sentences, or words.
+
+## Site Info
+
+- [About](https://shrinkmytools.com/about.html): What Shrink My Tools is and why it's built client-side.
+- [Privacy Policy](https://shrinkmytools.com/privacy.html): No files or text are ever uploaded or stored; third-party analytics/ad disclosures.
+- [Terms of Use](https://shrinkmytools.com/terms.html): Terms governing use of the site.
+- [Sitemap](https://shrinkmytools.com/sitemap.xml)
