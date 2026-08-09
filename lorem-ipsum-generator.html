@@ -18,6 +18,10 @@
 <meta property="og:description" content="Generate Lorem Ipsum placeholder text by paragraphs, sentences, or words.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/lorem-ipsum-generator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lorem Ipsum Generator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Text, Design & Generators",
+      "item": "https://shrinkmytools.com/#text-design-generators"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Lorem Ipsum Generator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Lorem Ipsum actual Latin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's derived from a real Latin text (a passage from Cicero, written in 45 BC) but scrambled and altered over centuries of use, so it isn't grammatically correct or directly translatable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not just use real text instead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Real text tends to distract reviewers into reading and judging the words themselves \u2014 meaningless placeholder text keeps the focus on layout, spacing, and typography."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I control exactly how many words are in each paragraph?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paragraph length varies slightly by design, to look more natural \u2014 use \"words\" mode instead if you need an exact word count."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
@@ -143,6 +212,20 @@
       <li>Use <strong>sentences</strong> for shorter elements like captions or card descriptions.</li>
       <li>Use <strong>words</strong> for filling tight spaces like buttons or labels.</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Is Lorem Ipsum actual Latin?</strong><p>It's derived from a real Latin text (a passage from Cicero, written in 45 BC) but scrambled and altered over centuries of use, so it isn't grammatically correct or directly translatable.</p></div>
+    <div class="faq-item"><strong>Why not just use real text instead?</strong><p>Real text tends to distract reviewers into reading and judging the words themselves — meaningless placeholder text keeps the focus on layout, spacing, and typography.</p></div>
+    <div class="faq-item"><strong>Can I control exactly how many words are in each paragraph?</strong><p>Paragraph length varies slightly by design, to look more natural — use "words" mode instead if you need an exact word count.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="word-counter.html">Word & Character Counter</a>
+    <a class="related-link" href="color-picker.html">Color Picker & Converter</a>
+    <a class="related-link" href="case-converter.html">Case Converter</a>
   </div>
 </div>
 

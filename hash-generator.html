@@ -18,6 +18,10 @@
 <meta property="og:description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes instantly in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/hash-generator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hash Generator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Developer Tools",
+      "item": "https://shrinkmytools.com/#developer-tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hash Generator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I reverse a hash back into the original text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 hashing is a one-way function by design; there's no way to recover the original input from the hash alone, which is what makes hashes useful for storing passwords securely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do MD5 and SHA-1 show as \"broken\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Researchers have demonstrated practical ways to create two different inputs with the same MD5 or SHA-1 hash. This undermines their use for security purposes \u2014 they're still fine for basic checksums, just not for anything security-sensitive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will hashing the same file twice always give the same result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 a given input always produces the exact same hash with the same algorithm, which is what makes hashes useful for verifying a file hasn't changed."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
@@ -151,6 +220,20 @@
       <li><strong>SHA-512</strong> — similar security profile to SHA-256 with a longer digest, sometimes preferred for extra margin.</li>
     </ul>
     <p>SHA hashes are computed using your browser's native Web Crypto API; MD5 uses a local JavaScript implementation. Nothing you type or upload here ever leaves your device.</p>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Can I reverse a hash back into the original text?</strong><p>No — hashing is a one-way function by design; there's no way to recover the original input from the hash alone, which is what makes hashes useful for storing passwords securely.</p></div>
+    <div class="faq-item"><strong>Why do MD5 and SHA-1 show as "broken"?</strong><p>Researchers have demonstrated practical ways to create two different inputs with the same MD5 or SHA-1 hash. This undermines their use for security purposes — they're still fine for basic checksums, just not for anything security-sensitive.</p></div>
+    <div class="faq-item"><strong>Will hashing the same file twice always give the same result?</strong><p>Yes — a given input always produces the exact same hash with the same algorithm, which is what makes hashes useful for verifying a file hasn't changed.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="json-formatter.html">JSON Formatter & Validator</a>
+    <a class="related-link" href="password-generator.html">Password Generator</a>
+    <a class="related-link" href="case-converter.html">Case Converter</a>
   </div>
 </div>
 

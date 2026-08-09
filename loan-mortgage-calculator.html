@@ -18,6 +18,10 @@
 <meta property="og:description" content="Estimate your monthly loan or mortgage payment and total interest instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/loan-mortgage-calculator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loan & Mortgage Calculator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators & Converters",
+      "item": "https://shrinkmytools.com/#calculators-converters"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Loan & Mortgage Calculator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is my payment slightly different from what my bank quoted?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Banks often include escrowed items like property tax and insurance in the quoted \"payment,\" and may round differently \u2014 this calculator shows the pure principal-and-interest payment only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does paying extra every month really make a big difference?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 because interest is calculated on the remaining balance, extra principal payments reduce every future interest charge, which compounds significantly over a long loan term."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I enter 0% interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator switches to simple even division of the loan amount across the term, since the standard amortization formula requires a non-zero rate."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --good:#3ecf8e;
@@ -170,6 +239,20 @@
       <li>Origination fees, closing costs, or lender-specific charges</li>
       <li>Variable/adjustable interest rates (this assumes a fixed rate for the full term)</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Why is my payment slightly different from what my bank quoted?</strong><p>Banks often include escrowed items like property tax and insurance in the quoted "payment," and may round differently — this calculator shows the pure principal-and-interest payment only.</p></div>
+    <div class="faq-item"><strong>Does paying extra every month really make a big difference?</strong><p>Yes — because interest is calculated on the remaining balance, extra principal payments reduce every future interest charge, which compounds significantly over a long loan term.</p></div>
+    <div class="faq-item"><strong>What happens if I enter 0% interest?</strong><p>The calculator switches to simple even division of the loan amount across the term, since the standard amortization formula requires a non-zero rate.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="unit-converter.html">Unit Converter</a>
+    <a class="related-link" href="percentage-calculator.html">Percentage Calculator</a>
+    <a class="related-link" href="bmi-calculator.html">BMI Calculator</a>
   </div>
 </div>
 

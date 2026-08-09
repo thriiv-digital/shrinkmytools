@@ -18,6 +18,10 @@
 <meta property="og:description" content="Calculate percentages, percentage increase/decrease, and more, instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/percentage-calculator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Percentage Calculator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators & Converters",
+      "item": "https://shrinkmytools.com/#calculators-converters"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Percentage Calculator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between \"percentage change\" and \"percentage points\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Percentage change is relative (going from 10% to 15% is a 50% increase), while percentage points is the raw difference (a 5 percentage point increase) \u2014 this calculator computes percentage change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my \"% change\" result negative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A negative result means the second number is smaller than the first \u2014 i.e. a decrease rather than an increase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for calculating a tip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 use the first calculator (\"what is X% of Y\") with your bill total and desired tip percentage."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --good:#3ecf8e;
@@ -131,6 +200,20 @@
       <li><strong>"Increase/decrease by X%"</strong> — e.g. applying a price increase, a raise, or a discount directly to a number.</li>
     </ul>
     <p>All calculations update instantly as you type — nothing is sent anywhere.</p>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>What's the difference between "percentage change" and "percentage points"?</strong><p>Percentage change is relative (going from 10% to 15% is a 50% increase), while percentage points is the raw difference (a 5 percentage point increase) — this calculator computes percentage change.</p></div>
+    <div class="faq-item"><strong>Why is my "% change" result negative?</strong><p>A negative result means the second number is smaller than the first — i.e. a decrease rather than an increase.</p></div>
+    <div class="faq-item"><strong>Can I use this for calculating a tip?</strong><p>Yes — use the first calculator ("what is X% of Y") with your bill total and desired tip percentage.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="bmi-calculator.html">BMI Calculator</a>
+    <a class="related-link" href="loan-mortgage-calculator.html">Loan & Mortgage Calculator</a>
+    <a class="related-link" href="age-calculator.html">Age Calculator</a>
   </div>
 </div>
 

@@ -18,6 +18,10 @@
 <meta property="og:description" content="Convert length, weight, temperature, volume, and area units instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/unit-converter.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unit Converter">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators & Converters",
+      "item": "https://shrinkmytools.com/#calculators-converters"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Unit Converter"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate are the conversions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All conversions use standard, internationally recognized conversion factors (e.g. exactly 25.4mm per inch) \u2014 results are accurate to at least 6 significant figures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does temperature work differently from the other categories?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Celsius, Fahrenheit, and Kelvin don't share a common zero point, so temperature can't use a simple multiplication factor like length or weight \u2014 it uses the correct offset formulas instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert between categories, like weight to volume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 unit conversion only works within a single category (e.g. length to length), since converting between fundamentally different physical quantities requires knowing the substance's density, which this tool doesn't ask for."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
@@ -140,6 +209,20 @@
       <li><strong>Volume:</strong> milliliters, liters, US gallons, US cups, fluid ounces</li>
       <li><strong>Area:</strong> square meters, square feet, acres, hectares, square kilometers</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>How accurate are the conversions?</strong><p>All conversions use standard, internationally recognized conversion factors (e.g. exactly 25.4mm per inch) — results are accurate to at least 6 significant figures.</p></div>
+    <div class="faq-item"><strong>Why does temperature work differently from the other categories?</strong><p>Celsius, Fahrenheit, and Kelvin don't share a common zero point, so temperature can't use a simple multiplication factor like length or weight — it uses the correct offset formulas instead.</p></div>
+    <div class="faq-item"><strong>Can I convert between categories, like weight to volume?</strong><p>No — unit conversion only works within a single category (e.g. length to length), since converting between fundamentally different physical quantities requires knowing the substance's density, which this tool doesn't ask for.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="loan-mortgage-calculator.html">Loan & Mortgage Calculator</a>
+    <a class="related-link" href="bmi-calculator.html">BMI Calculator</a>
+    <a class="related-link" href="percentage-calculator.html">Percentage Calculator</a>
   </div>
 </div>
 

@@ -19,6 +19,10 @@
 <meta property="og:description" content="Merge, split, or compress PDFs free in your browser. No signup, no upload.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/pdf-tools.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PDF Merge, Split & Compress">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +42,80 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Text, Design & Generators",
+      "item": "https://shrinkmytools.com/#text-design-generators"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF Merge, Split & Compress"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will merging or splitting change the quality of my PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — merge and split copy pages byte-for-byte with no re-compression, so text stays selectable and images stay at full resolution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I merge a password-protected PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — password-protected PDFs need to have the password removed first, since this tool can't read encrypted page content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did Compress make my PDF's text unselectable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compress rasterizes each page into an image to shrink file size, which means text is no longer selectable afterward — use Merge or Split instead if you need to keep text searchable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's a good starting point for compression settings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Medium (150 DPI) at 70% JPEG quality is a solid default — it significantly reduces file size while keeping text and images legible."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --accent-hover:#597af5;
@@ -275,6 +352,21 @@
       <li>For compressing, start with Medium (150 DPI) and 70% quality — it's usually the sweet spot between file size and legibility.</li>
       <li>Password-protected PDFs can't be processed by any of these tools until the password is removed first.</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Will merging or splitting change the quality of my PDFs?</strong><p>No — merge and split copy pages byte-for-byte with no re-compression, so text stays selectable and images stay at full resolution.</p></div>
+    <div class="faq-item"><strong>Can I merge a password-protected PDF?</strong><p>No — password-protected PDFs need to have the password removed first, since this tool can't read encrypted page content.</p></div>
+    <div class="faq-item"><strong>Why did Compress make my PDF's text unselectable?</strong><p>Compress rasterizes each page into an image to shrink file size, which means text is no longer selectable afterward — use Merge or Split instead if you need to keep text searchable.</p></div>
+    <div class="faq-item"><strong>What's a good starting point for compression settings?</strong><p>Medium (150 DPI) at 70% JPEG quality is a solid default — it significantly reduces file size while keeping text and images legible.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="qr-code-generator.html">QR Code Generator</a>
+    <a class="related-link" href="heic-converter.html">HEIC to JPG/PNG Converter</a>
+    <a class="related-link" href="watermark-adder.html">Watermark Adder</a>
   </div>
 </div>
 

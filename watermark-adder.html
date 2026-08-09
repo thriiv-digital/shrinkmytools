@@ -18,6 +18,10 @@
 <meta property="og:description" content="Add a text or logo watermark to one or many photos instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/watermark-adder.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Watermark Adder">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Image Tools",
+      "item": "https://shrinkmytools.com/#image-tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Watermark Adder"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I add a logo image instead of text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This version supports text watermarks only \u2014 a logo/image watermark option may be added in a future update."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the watermark reduce image quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 the original image is unchanged apart from the watermark overlay; output is saved as PNG, so there's no additional compression loss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What opacity should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "40-60% is a good default \u2014 visible enough to deter casual reuse, but not so strong it obscures the photo underneath."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --good:#3ecf8e;
@@ -192,6 +261,20 @@
       <li><strong>Lower opacity</strong> (40-60%) keeps the underlying image visible while still being clearly present.</li>
       <li>This tool processes everything locally — your original photos are never uploaded anywhere.</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Can I add a logo image instead of text?</strong><p>This version supports text watermarks only — a logo/image watermark option may be added in a future update.</p></div>
+    <div class="faq-item"><strong>Does the watermark reduce image quality?</strong><p>No — the original image is unchanged apart from the watermark overlay; output is saved as PNG, so there's no additional compression loss.</p></div>
+    <div class="faq-item"><strong>What opacity should I use?</strong><p>40-60% is a good default — visible enough to deter casual reuse, but not so strong it obscures the photo underneath.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="heic-converter.html">HEIC to JPG/PNG Converter</a>
+    <a class="related-link" href="favicon-generator.html">Favicon Generator</a>
+    <a class="related-link" href="color-picker.html">Color Picker & Converter</a>
   </div>
 </div>
 

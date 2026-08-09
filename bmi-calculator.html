@@ -18,6 +18,10 @@
 <meta property="og:description" content="Calculate your BMI instantly using metric or imperial units.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/bmi-calculator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BMI Calculator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators & Converters",
+      "item": "https://shrinkmytools.com/#calculators-converters"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "BMI Calculator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is BMI accurate for athletes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not particularly \u2014 BMI doesn't distinguish muscle from fat, so muscular or athletic individuals often show a higher BMI despite low body fat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does BMI differ for men and women?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard BMI formula and category thresholds are the same for both sexes, though some health organizations note that body fat distribution differs by sex as a limitation of the measure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if my BMI is outside the healthy range?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Talk to a healthcare professional \u2014 they can assess your specific situation far more accurately than a general screening number alone."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --good:#3ecf8e; --warn:#e3b95d; --bad:#e35d5d;
@@ -158,6 +227,20 @@
       despite having low body fat. It's a population-level screening tool, not a precise individual diagnostic —
       use it as a general reference point rather than a definitive health measure.
     </p>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Is BMI accurate for athletes?</strong><p>Not particularly — BMI doesn't distinguish muscle from fat, so muscular or athletic individuals often show a higher BMI despite low body fat.</p></div>
+    <div class="faq-item"><strong>Does BMI differ for men and women?</strong><p>The standard BMI formula and category thresholds are the same for both sexes, though some health organizations note that body fat distribution differs by sex as a limitation of the measure.</p></div>
+    <div class="faq-item"><strong>What should I do if my BMI is outside the healthy range?</strong><p>Talk to a healthcare professional — they can assess your specific situation far more accurately than a general screening number alone.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="percentage-calculator.html">Percentage Calculator</a>
+    <a class="related-link" href="age-calculator.html">Age Calculator</a>
+    <a class="related-link" href="unit-converter.html">Unit Converter</a>
   </div>
 </div>
 

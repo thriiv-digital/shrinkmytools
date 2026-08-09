@@ -18,6 +18,10 @@
 <meta property="og:description" content="Calculate your exact age in years, months, and days, or days until a date.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/age-calculator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Age Calculator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators & Converters",
+      "item": "https://shrinkmytools.com/#calculators-converters"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Age Calculator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does it account for leap years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 the calculation uses actual calendar dates via JavaScript's native Date object, which correctly accounts for leap years and varying month lengths."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I calculate the time between two dates that aren't birthdays?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 enter any two dates; it works for calculating the time between any two events, not just age."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why would I use a date other than today for \"as of\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To calculate someone's exact age at a specific past or future date \u2014 useful for legal, medical, or eligibility purposes where the exact age on a particular date matters."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
@@ -121,6 +190,20 @@
       The "days to next birthday" figure uses the day and month of your start date to find the next anniversary
       from the "as of" date — useful for birthdays, anniversaries, or any recurring annual date.
     </p>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Does it account for leap years?</strong><p>Yes — the calculation uses actual calendar dates via JavaScript's native Date object, which correctly accounts for leap years and varying month lengths.</p></div>
+    <div class="faq-item"><strong>Can I calculate the time between two dates that aren't birthdays?</strong><p>Yes — enter any two dates; it works for calculating the time between any two events, not just age.</p></div>
+    <div class="faq-item"><strong>Why would I use a date other than today for "as of"?</strong><p>To calculate someone's exact age at a specific past or future date — useful for legal, medical, or eligibility purposes where the exact age on a particular date matters.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="percentage-calculator.html">Percentage Calculator</a>
+    <a class="related-link" href="bmi-calculator.html">BMI Calculator</a>
+    <a class="related-link" href="unit-converter.html">Unit Converter</a>
   </div>
 </div>
 

@@ -18,6 +18,10 @@
 <meta property="og:description" content="Count words, characters, sentences, and reading time instantly. Free, no signup, no upload.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/word-counter.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Word & Character Counter">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Text, Design & Generators",
+      "item": "https://shrinkmytools.com/#text-design-generators"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Word & Character Counter"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does it count words the same way Microsoft Word does?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very close \u2014 both count space-separated word groups. Minor differences can occur with hyphenated words or unusual punctuation, but the count will typically match within a word or two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my text saved or sent anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 text is counted entirely in your browser as you type; nothing is transmitted or stored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is reading time calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using the commonly cited average adult silent reading speed of 200 words per minute."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
@@ -130,6 +199,20 @@
     </table>
     <h3>How reading time is calculated</h3>
     <p>Reading time is estimated at the commonly cited average adult silent reading speed of ~200 words per minute.</p>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Does it count words the same way Microsoft Word does?</strong><p>Very close — both count space-separated word groups. Minor differences can occur with hyphenated words or unusual punctuation, but the count will typically match within a word or two.</p></div>
+    <div class="faq-item"><strong>Is my text saved or sent anywhere?</strong><p>No — text is counted entirely in your browser as you type; nothing is transmitted or stored.</p></div>
+    <div class="faq-item"><strong>How is reading time calculated?</strong><p>Using the commonly cited average adult silent reading speed of 200 words per minute.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="case-converter.html">Case Converter</a>
+    <a class="related-link" href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a>
+    <a class="related-link" href="json-formatter.html">JSON Formatter & Validator</a>
   </div>
 </div>
 

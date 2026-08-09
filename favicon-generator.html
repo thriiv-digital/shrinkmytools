@@ -18,6 +18,10 @@
 <meta property="og:description" content="Generate every favicon size you need from one image, instantly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/favicon-generator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Favicon Generator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Image Tools",
+      "item": "https://shrinkmytools.com/#image-tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Favicon Generator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need all six sizes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not strictly \u2014 16\u00d716, 32\u00d732, and 180\u00d7180 (Apple touch icon) cover the vast majority of browsers and devices; the larger sizes mainly matter for PWA installs and app store listings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my logo look cropped in the generated icons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non-square images are automatically center-cropped to a square before resizing, since all standard favicon formats are square \u2014 use a square source image to avoid any cropping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between favicon.ico and PNG favicons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The classic .ico format bundles multiple sizes in one file and has near-universal support; modern browsers also fully support PNG favicons via the HTML snippet this tool generates, which is simpler to maintain."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
@@ -137,6 +206,20 @@
       <li><strong>512×512</strong> — PWA splash screens and app stores</li>
     </ul>
     <p>Download each size individually, or all at once, then paste the generated HTML snippet into your site's <code>&lt;head&gt;</code>.</p>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Do I need all six sizes?</strong><p>Not strictly — 16×16, 32×32, and 180×180 (Apple touch icon) cover the vast majority of browsers and devices; the larger sizes mainly matter for PWA installs and app store listings.</p></div>
+    <div class="faq-item"><strong>Why does my logo look cropped in the generated icons?</strong><p>Non-square images are automatically center-cropped to a square before resizing, since all standard favicon formats are square — use a square source image to avoid any cropping.</p></div>
+    <div class="faq-item"><strong>What's the difference between favicon.ico and PNG favicons?</strong><p>The classic .ico format bundles multiple sizes in one file and has near-universal support; modern browsers also fully support PNG favicons via the HTML snippet this tool generates, which is simpler to maintain.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="heic-converter.html">HEIC to JPG/PNG Converter</a>
+    <a class="related-link" href="watermark-adder.html">Watermark Adder</a>
+    <a class="related-link" href="color-picker.html">Color Picker & Converter</a>
   </div>
 </div>
 

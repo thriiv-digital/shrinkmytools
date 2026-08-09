@@ -18,6 +18,10 @@
 <meta property="og:description" content="Convert HEIC/HEIF iPhone photos to JPG or PNG instantly in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/heic-converter.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HEIC to JPG/PNG Converter">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,7 +34,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Image Tools",
+      "item": "https://shrinkmytools.com/#image-tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HEIC to JPG/PNG Converter"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do iPhones use HEIC instead of JPG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HEIC compresses roughly twice as efficiently as JPG at the same visual quality, saving significant storage space \u2014 Apple made it the default format in iOS 11."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I lose quality converting HEIC to JPG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's a small quality trade-off since JPG uses different compression, but at high quality settings the difference is generally not visible to the eye."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work with Live Photos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This converts the still HEIC image only \u2014 Live Photos also include a short video component that isn't part of the HEIC file itself."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --good:#3ecf8e;
@@ -154,6 +223,20 @@
       <li>Choose <strong>JPG</strong> for photos and smaller file sizes.</li>
       <li>Choose <strong>PNG</strong> if you need lossless quality (larger files).</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Why do iPhones use HEIC instead of JPG?</strong><p>HEIC compresses roughly twice as efficiently as JPG at the same visual quality, saving significant storage space — Apple made it the default format in iOS 11.</p></div>
+    <div class="faq-item"><strong>Will I lose quality converting HEIC to JPG?</strong><p>There's a small quality trade-off since JPG uses different compression, but at high quality settings the difference is generally not visible to the eye.</p></div>
+    <div class="faq-item"><strong>Does this work with Live Photos?</strong><p>This converts the still HEIC image only — Live Photos also include a short video component that isn't part of the HEIC file itself.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="favicon-generator.html">Favicon Generator</a>
+    <a class="related-link" href="watermark-adder.html">Watermark Adder</a>
+    <a class="related-link" href="pdf-tools.html">PDF Merge, Split & Compress</a>
   </div>
 </div>
 

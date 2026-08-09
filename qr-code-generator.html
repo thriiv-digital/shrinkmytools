@@ -19,6 +19,10 @@
 <meta property="og:description" content="Generate a custom QR code from any link or text and download it as PNG or SVG. Free, no signup, no watermark.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shrinkmytools.com/qr-code-generator.html">
+<meta property="og:image" content="https://shrinkmytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QR Code Generator">
+<meta name="twitter:image" content="https://shrinkmytools.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +35,72 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Shrink My Tools",
+      "item": "https://shrinkmytools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Text, Design & Generators",
+      "item": "https://shrinkmytools.com/#text-design-generators"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "QR Code Generator"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do QR codes expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 a QR code generated here is a static, permanent encoding of whatever text or link you entered; it doesn't expire or depend on this site staying online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much text can a QR code hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Up to about 4,300 alphanumeric characters, though very long text produces a dense, harder-to-scan code \u2014 short URLs work best."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will a colored QR code still scan correctly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, as long as there's strong contrast between the foreground and background colors \u2014 avoid similar shades, like light blue on white."
+      }
+    }
+  ]
+}
+</script>
 <style>
+  .related-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .related-link{ background:var(--panel2); border:1px solid var(--border); color:var(--text);
+    padding:8px 14px; border-radius:999px; font-size:0.85rem; text-decoration:none; transition:.15s; }
+  .related-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .faq-item{ padding:14px 0; border-top:1px solid var(--border); }
+  .faq-item:first-of-type{ border-top:none; }
+  .faq-item strong{ color:var(--text); font-size:0.93rem; }
+  .faq-item p{ margin:6px 0 0; }
   :root{
     --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
     --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --accent-hover:#597af5;
@@ -191,6 +260,20 @@
       <li>Always test your QR code with a real phone camera before printing it at scale.</li>
       <li>Keep a quiet margin (blank space) around the code — most generators, including this one, include it automatically.</li>
     </ul>
+
+    <h3 style="margin-top:28px;">Frequently Asked Questions</h3>
+    <div class="faq-item"><strong>Do QR codes expire?</strong><p>No — a QR code generated here is a static, permanent encoding of whatever text or link you entered; it doesn't expire or depend on this site staying online.</p></div>
+    <div class="faq-item"><strong>How much text can a QR code hold?</strong><p>Up to about 4,300 alphanumeric characters, though very long text produces a dense, harder-to-scan code — short URLs work best.</p></div>
+    <div class="faq-item"><strong>Will a colored QR code still scan correctly?</strong><p>Yes, as long as there's strong contrast between the foreground and background colors — avoid similar shades, like light blue on white.</p></div>
+  </div>
+</div>
+
+<div class="layout" style="padding-top:0;">
+  <div class="card related-tools">
+    <h2 style="margin-top:0; font-size:1rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-size:0.78rem;">Related Tools</h2>
+    <a class="related-link" href="password-generator.html">Password Generator</a>
+    <a class="related-link" href="pdf-tools.html">PDF Merge, Split & Compress</a>
+    <a class="related-link" href="color-picker.html">Color Picker & Converter</a>
   </div>
 </div>
 
