@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5XT72H0KV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C5XT72H0KV');
+</script>
+<title>Free Watermark Adder — Add Text or Logo to Photos</title>
+<meta name="description" content="Add a text or logo watermark to one or many photos instantly in your browser. Free, no signup, no upload — batch watermarking supported.">
+<link rel="canonical" href="https://shrinkmytools.com/watermark-adder.html">
+<meta property="og:title" content="Free Watermark Adder">
+<meta property="og:description" content="Add a text or logo watermark to one or many photos instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shrinkmytools.com/watermark-adder.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Watermark Adder",
+  "url": "https://shrinkmytools.com/watermark-adder.html",
+  "description": "Add a text or logo watermark to one or many photos instantly in your browser. Free, no signup, no upload.",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{
+    --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
+    --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff; --good:#3ecf8e;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eeeef0; --bg2:#e9e9eb; --panel:#ffffff; --panel2:#f5f5f6; --border:#dcdce0;
+      --text:#1c1c1f; --muted:#6b6b72; --accent:#4f6bff; --accent2:#7b4fff; --good:#1f9d6d;
+      --shadow: 0 10px 30px -12px rgba(30,30,35,0.15);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(127,127,140,0.16) 1px, transparent 0),
+      radial-gradient(1100px 600px at 50% -12%, rgba(127,127,140,0.10), transparent 60%);
+    background-size: 26px 26px, 100% 100%;
+    color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .back{ display:block; max-width:1100px; margin:0 auto; padding:24px 20px 0; font-size:0.85rem; color:var(--muted); text-decoration:none; }
+  .back:hover{ color:var(--text); }
+  header{ text-align:center; padding:20px 20px 20px; }
+  header h1{
+    margin:0 0 12px; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.02em;
+    background:linear-gradient(135deg, var(--text) 20%, var(--accent) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p{ margin:0 auto; color:var(--muted); max-width:520px; line-height:1.5; }
+  .layout{ max-width:1000px; margin:0 auto; padding:20px; display:grid; grid-template-columns:1fr; gap:22px; }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+  #dropzone{
+    border:2px dashed var(--border); border-radius:14px; padding:44px 20px; text-align:center;
+    cursor:pointer; transition:.2s ease; color:var(--muted); background:var(--panel2);
+  }
+  #dropzone:hover{ border-color:var(--accent); }
+  #dropzone.drag{ border-color:var(--accent); background:rgba(109,139,255,0.08); color:var(--text); }
+  #dropzone .icon{ font-size:2rem; display:block; margin-bottom:8px; }
+  #dropzone strong{ color:var(--text); }
+  input[type=file]{ display:none; }
+  .controls{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-top:20px; }
+  .field label{ display:block; font-size:0.78rem; color:var(--muted); margin-bottom:6px; font-weight:600; }
+  input[type=text], input[type=number], input[type=color], select{
+    width:100%; padding:9px 12px; border-radius:9px; border:1px solid var(--border);
+    background:var(--bg2); color:var(--text); font-size:0.9rem;
+  }
+  input[type=color]{ height:38px; padding:2px; cursor:pointer; }
+  .field.checkbox{ display:flex; align-items:center; gap:8px; flex-direction:row; margin-top:auto; }
+  .field.checkbox label{ margin:0; }
+  .slider-row{ display:flex; align-items:center; gap:10px; }
+  input[type=range]{ flex:1; -webkit-appearance:none; height:6px; border-radius:999px; background:linear-gradient(90deg, var(--accent), var(--accent2)); }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:#fff; border:2px solid var(--accent); cursor:pointer; }
+  .position-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4px; width:100px; }
+  .pos-btn{ aspect-ratio:1; background:var(--panel2); border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+  .pos-btn.active{ background:var(--accent); border-color:var(--accent); }
+  .actions{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .btn{
+    background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border:none;
+    padding:11px 20px; border-radius:10px; font-size:0.92rem; cursor:pointer; font-weight:700;
+    box-shadow:0 6px 16px -6px rgba(109,139,255,0.55);
+  }
+  .btn:hover{ filter:brightness(1.08); }
+  .btn:disabled{ opacity:0.4; cursor:not-allowed; }
+  .btn.secondary{ background:var(--panel2); border:1px solid var(--border); color:var(--text); box-shadow:none; }
+  .status{ margin-top:14px; font-size:0.88rem; color:var(--muted); }
+  .status.good{ color:var(--good); }
+  .results{ margin-top:20px; display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
+  .result-card{ border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--panel2); }
+  .result-card img{ width:100%; display:block; aspect-ratio:1/1; object-fit:contain; background:repeating-conic-gradient(#00000012 0% 25%, transparent 0% 50%) 50%/16px 16px; }
+  .result-meta{ padding:10px 12px; font-size:0.78rem; color:var(--muted); }
+  .result-meta .name{ color:var(--text); font-weight:600; display:block; word-break:break-all; }
+  .result-actions{ padding:0 12px 12px; }
+  .result-actions .btn{ width:100%; padding:8px; font-size:0.8rem; }
+  .content-section{ margin-top:6px; }
+  .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
+  .content-section p, .content-section li{ color:var(--muted); font-size:0.93rem; line-height:1.7; }
+  .content-section ul{ margin:0 0 14px; padding-left:22px; }
+  .content-section strong{ color:var(--text); }
+  footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
+  footer a{ color:inherit; }
+</style>
+</head>
+<body>
+
+<a class="back" href="/">&larr; All tools</a>
+
+<header>
+  <h1>Watermark Adder</h1>
+  <p>Add a text watermark to one or many photos at once — free, nothing uploaded.</p>
+</header>
+
+<div class="layout">
+  <div class="card">
+    <div id="dropzone">
+      <span class="icon">📥</span>
+      <strong>Click to choose images</strong> or drag &amp; drop them here<br>
+      <span style="font-size:0.78rem;">Multiple files supported</span>
+      <input type="file" id="fileInput" accept="image/*" multiple>
+    </div>
+
+    <div class="controls">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="wmText">Watermark text</label>
+        <input type="text" id="wmText" value="© Your Name">
+      </div>
+      <div class="field">
+        <label for="wmColor">Color</label>
+        <input type="color" id="wmColor" value="#ffffff">
+      </div>
+      <div class="field">
+        <label for="wmSize">Font size (% of image width)</label>
+        <div class="slider-row"><input type="range" id="wmSize" min="2" max="15" value="5"></div>
+      </div>
+      <div class="field">
+        <label for="wmOpacity">Opacity (<span id="wmOpacityVal">60</span>%)</label>
+        <div class="slider-row"><input type="range" id="wmOpacity" min="10" max="100" value="60"></div>
+      </div>
+      <div class="field">
+        <label>Position</label>
+        <div class="position-grid" id="positionGrid">
+          <button class="pos-btn" data-pos="top-left"></button>
+          <button class="pos-btn" data-pos="top-center"></button>
+          <button class="pos-btn" data-pos="top-right"></button>
+          <button class="pos-btn" data-pos="middle-left"></button>
+          <button class="pos-btn" data-pos="middle-center"></button>
+          <button class="pos-btn" data-pos="middle-right"></button>
+          <button class="pos-btn" data-pos="bottom-left"></button>
+          <button class="pos-btn" data-pos="bottom-center"></button>
+          <button class="pos-btn active" data-pos="bottom-right"></button>
+        </div>
+      </div>
+      <div class="field checkbox">
+        <input type="checkbox" id="wmTile">
+        <label for="wmTile">Repeat watermark across image (tiled)</label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="applyBtn" disabled>Apply Watermark</button>
+      <button class="btn secondary" id="downloadAllBtn" disabled>Download All</button>
+      <button class="btn secondary" id="clearBtn" disabled>Clear</button>
+    </div>
+    <div class="status" id="status"></div>
+    <div class="results" id="results"></div>
+  </div>
+
+  <div class="card content-section">
+    <h2>About Watermarking</h2>
+    <p>
+      A watermark deters casual image theft and reinforces attribution when photos are shared or reposted —
+      commonly used by photographers, small businesses listing products, and anyone sharing preview images
+      publicly before a sale or full release.
+    </p>
+    <ul>
+      <li><strong>Tiled watermarks</strong> are much harder to crop out than a single corner mark, at the cost of being more visually intrusive.</li>
+      <li><strong>Lower opacity</strong> (40-60%) keeps the underlying image visible while still being clearly present.</li>
+      <li>This tool processes everything locally — your original photos are never uploaded anywhere.</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  Free, private, browser-based tools.<br>
+  <a href="/about.html">About</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+</footer>
+
+<script>
+(function(){
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const applyBtn = document.getElementById('applyBtn');
+  const downloadAllBtn = document.getElementById('downloadAllBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const status = document.getElementById('status');
+  const results = document.getElementById('results');
+  const wmText = document.getElementById('wmText');
+  const wmColor = document.getElementById('wmColor');
+  const wmSize = document.getElementById('wmSize');
+  const wmOpacity = document.getElementById('wmOpacity');
+  const wmOpacityVal = document.getElementById('wmOpacityVal');
+  const wmTile = document.getElementById('wmTile');
+  const positionGrid = document.getElementById('positionGrid');
+
+  let files = [];
+  let processed = [];
+  let position = 'bottom-right';
+
+  wmOpacity.addEventListener('input', () => wmOpacityVal.textContent = wmOpacity.value);
+  positionGrid.addEventListener('click', e => {
+    const btn = e.target.closest('.pos-btn');
+    if (!btn) return;
+    positionGrid.querySelectorAll('.pos-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    position = btn.dataset.pos;
+  });
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
+  dropzone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropzone.classList.remove('drag');
+    addFiles(e.dataTransfer.files);
+  });
+  fileInput.addEventListener('change', () => addFiles(fileInput.files));
+
+  function addFiles(fileList){
+    const imgs = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+    files = files.concat(imgs);
+    applyBtn.disabled = files.length === 0;
+    clearBtn.disabled = files.length === 0;
+    dropzone.querySelector('strong').textContent = `${files.length} file${files.length===1?'':'s'} selected`;
+  }
+
+  clearBtn.addEventListener('click', () => {
+    files = [];
+    processed.forEach(p => URL.revokeObjectURL(p.url));
+    processed = [];
+    results.innerHTML = '';
+    status.textContent = '';
+    applyBtn.disabled = true;
+    clearBtn.disabled = true;
+    downloadAllBtn.disabled = true;
+    dropzone.querySelector('strong').textContent = 'Click to choose images';
+    fileInput.value = '';
+  });
+
+  function drawWatermark(ctx, width, height){
+    const text = wmText.value || '';
+    if (!text) return;
+    const fontSize = Math.round(width * (parseInt(wmSize.value, 10) / 100));
+    ctx.font = `bold ${fontSize}px -apple-system, sans-serif`;
+    ctx.fillStyle = wmColor.value;
+    ctx.globalAlpha = parseInt(wmOpacity.value, 10) / 100;
+
+    if (wmTile.checked) {
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const textWidth = ctx.measureText(text).width;
+      const stepX = textWidth + fontSize * 2;
+      const stepY = fontSize * 4;
+      ctx.save();
+      for (let y = -stepY; y < height + stepY; y += stepY) {
+        for (let x = -stepX; x < width + stepX; x += stepX) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(-Math.PI / 8);
+          ctx.fillText(text, 0, 0);
+          ctx.restore();
+        }
+      }
+      ctx.restore();
+    } else {
+      const padding = fontSize * 0.6;
+      const vAlign = position.startsWith('top') ? 'top' : position.startsWith('bottom') ? 'bottom' : 'middle';
+      const hAlign = position.endsWith('left') ? 'left' : position.endsWith('right') ? 'right' : 'center';
+
+      ctx.textBaseline = vAlign === 'top' ? 'top' : vAlign === 'bottom' ? 'bottom' : 'middle';
+      ctx.textAlign = hAlign;
+
+      const x = hAlign === 'left' ? padding : hAlign === 'right' ? width - padding : width / 2;
+      const y = vAlign === 'top' ? padding : vAlign === 'bottom' ? height - padding : height / 2;
+
+      ctx.fillText(text, x, y);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  applyBtn.addEventListener('click', async () => {
+    applyBtn.disabled = true;
+    status.textContent = 'Applying watermark…';
+    status.className = 'status';
+    results.innerHTML = '';
+    processed.forEach(p => URL.revokeObjectURL(p.url));
+    processed = [];
+
+    for (const file of files) {
+      try {
+        const outFile = await processImage(file);
+        processed.push(outFile);
+        renderResult(outFile.name, outFile.url);
+      } catch (err) {
+        console.error('Failed to watermark', file.name, err);
+      }
+    }
+
+    status.textContent = `Watermarked ${processed.length} of ${files.length} image${files.length===1?'':'s'}.`;
+    status.className = 'status good';
+    applyBtn.disabled = false;
+    downloadAllBtn.disabled = processed.length === 0;
+  });
+
+  function processImage(file){
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const reader = new FileReader();
+      reader.onload = e => { img.src = e.target.result; };
+      reader.onerror = reject;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        drawWatermark(ctx, canvas.width, canvas.height);
+        canvas.toBlob(blob => {
+          if (!blob) { reject(new Error('toBlob failed')); return; }
+          const url = URL.createObjectURL(blob);
+          const name = file.name.replace(/\.[^.]+$/, '') + '-watermarked.png';
+          resolve({ url, name });
+        }, 'image/png');
+      };
+      img.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderResult(name, url){
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML = `
+      <img src="${url}" alt="${name}">
+      <div class="result-meta"><span class="name">${name}</span></div>
+      <div class="result-actions"><button class="btn download-one">Download</button></div>
+    `;
+    card.querySelector('.download-one').addEventListener('click', () => {
+      const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+    });
+    results.appendChild(card);
+  }
+
+  downloadAllBtn.addEventListener('click', () => {
+    processed.forEach((p, i) => {
+      setTimeout(() => {
+        const a = document.createElement('a'); a.href = p.url; a.download = p.name; a.click();
+      }, i * 150);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

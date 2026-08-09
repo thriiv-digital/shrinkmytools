@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5XT72H0KV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C5XT72H0KV');
+</script>
+<title>Free Age Calculator — Exact Age & Days Until a Date</title>
+<meta name="description" content="Calculate your exact age in years, months, and days, or the days until any future date. Free, instant, private.">
+<link rel="canonical" href="https://shrinkmytools.com/age-calculator.html">
+<meta property="og:title" content="Free Age Calculator">
+<meta property="og:description" content="Calculate your exact age in years, months, and days, or days until a date.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shrinkmytools.com/age-calculator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Age Calculator",
+  "url": "https://shrinkmytools.com/age-calculator.html",
+  "description": "Calculate your exact age in years, months, and days, or the days until any future date. Free, instant.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{
+    --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
+    --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eeeef0; --bg2:#e9e9eb; --panel:#ffffff; --panel2:#f5f5f6; --border:#dcdce0;
+      --text:#1c1c1f; --muted:#6b6b72; --accent:#4f6bff; --accent2:#7b4fff;
+      --shadow: 0 10px 30px -12px rgba(30,30,35,0.15);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(127,127,140,0.16) 1px, transparent 0),
+      radial-gradient(1100px 600px at 50% -12%, rgba(127,127,140,0.10), transparent 60%);
+    background-size: 26px 26px, 100% 100%;
+    color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .back{ display:block; max-width:1100px; margin:0 auto; padding:24px 20px 0; font-size:0.85rem; color:var(--muted); text-decoration:none; }
+  .back:hover{ color:var(--text); }
+  header{ text-align:center; padding:20px 20px 20px; }
+  header h1{
+    margin:0 0 12px; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.02em;
+    background:linear-gradient(135deg, var(--text) 20%, var(--accent) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p{ margin:0 auto; color:var(--muted); max-width:520px; line-height:1.5; }
+  .layout{ max-width:800px; margin:0 auto; padding:20px; display:grid; grid-template-columns:1fr; gap:22px; }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+  .field label{ display:block; font-size:0.78rem; color:var(--muted); margin-bottom:6px; font-weight:600; }
+  input[type=date]{ width:100%; padding:10px 12px; border-radius:9px; border:1px solid var(--border); background:var(--bg2); color:var(--text); font-size:0.95rem; }
+  input[type=date]:focus{ outline:none; border-color:var(--accent); }
+  .results{ margin-top:22px; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
+  .result-box{ background:var(--panel2); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center; }
+  .result-box .num{ font-size:1.5rem; font-weight:800; color:var(--accent); }
+  .result-box .label{ font-size:0.78rem; color:var(--muted); margin-top:4px; }
+  .content-section{ margin-top:6px; }
+  .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
+  .content-section p, .content-section li{ color:var(--muted); font-size:0.93rem; line-height:1.7; }
+  .content-section ul{ margin:0 0 14px; padding-left:22px; }
+  .content-section strong{ color:var(--text); }
+  footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
+  footer a{ color:inherit; }
+</style>
+</head>
+<body>
+
+<a class="back" href="/">&larr; All tools</a>
+
+<header>
+  <h1>Age Calculator</h1>
+  <p>Calculate an exact age, or the days until any future date.</p>
+</header>
+
+<div class="layout">
+  <div class="card">
+    <div class="field">
+      <label for="birthDate">Date of birth (or any start date)</label>
+      <input type="date" id="birthDate">
+    </div>
+    <div class="field" style="margin-top:14px;">
+      <label for="targetDate">Calculate age as of</label>
+      <input type="date" id="targetDate">
+    </div>
+    <div class="results">
+      <div class="result-box"><div class="num" id="resYears">—</div><div class="label">Years</div></div>
+      <div class="result-box"><div class="num" id="resMonths">—</div><div class="label">Months</div></div>
+      <div class="result-box"><div class="num" id="resDays">—</div><div class="label">Days</div></div>
+      <div class="result-box"><div class="num" id="resTotalDays">—</div><div class="label">Total days</div></div>
+      <div class="result-box"><div class="num" id="resWeeks">—</div><div class="label">Total weeks</div></div>
+      <div class="result-box"><div class="num" id="resNextBday">—</div><div class="label">Days to next birthday</div></div>
+    </div>
+  </div>
+
+  <div class="card content-section">
+    <h2>About This Calculator</h2>
+    <p>
+      Enter a start date and (optionally) a different "as of" date to calculate the exact time between them —
+      broken down into years, months, and days, plus the total number of days and weeks elapsed. Leave the
+      second date as today to calculate a current exact age.
+    </p>
+    <p>
+      The "days to next birthday" figure uses the day and month of your start date to find the next anniversary
+      from the "as of" date — useful for birthdays, anniversaries, or any recurring annual date.
+    </p>
+  </div>
+</div>
+
+<footer>
+  Free, private, browser-based tools.<br>
+  <a href="/about.html">About</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+</footer>
+
+<script>
+(function(){
+  const birthDate = document.getElementById('birthDate');
+  const targetDate = document.getElementById('targetDate');
+
+  const today = new Date();
+  targetDate.value = today.toISOString().slice(0,10);
+  const defaultBirth = new Date(today.getFullYear() - 25, today.getMonth(), today.getDate());
+  birthDate.value = defaultBirth.toISOString().slice(0,10);
+
+  function calculate(){
+    if (!birthDate.value || !targetDate.value) return;
+    const start = new Date(birthDate.value + 'T00:00:00');
+    const end = new Date(targetDate.value + 'T00:00:00');
+    if (start > end) {
+      document.getElementById('resYears').textContent = '—';
+      return;
+    }
+
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+    let days = end.getDate() - start.getDate();
+
+    if (days < 0) {
+      months--;
+      const daysInPrevMonth = new Date(end.getFullYear(), end.getMonth(), 0).getDate();
+      days += daysInPrevMonth;
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    const totalDays = Math.round((end - start) / 86400000);
+
+    document.getElementById('resYears').textContent = years;
+    document.getElementById('resMonths').textContent = months;
+    document.getElementById('resDays').textContent = days;
+    document.getElementById('resTotalDays').textContent = totalDays.toLocaleString();
+    document.getElementById('resWeeks').textContent = Math.floor(totalDays / 7).toLocaleString();
+
+    // Next birthday from "end" date
+    let nextBday = new Date(end.getFullYear(), start.getMonth(), start.getDate());
+    if (nextBday < end) nextBday = new Date(end.getFullYear() + 1, start.getMonth(), start.getDate());
+    const daysToNext = Math.round((nextBday - end) / 86400000);
+    document.getElementById('resNextBday').textContent = daysToNext;
+  }
+
+  birthDate.addEventListener('input', calculate);
+  targetDate.addEventListener('input', calculate);
+  calculate();
+})();
+</script>
+
+</body>
+</html>

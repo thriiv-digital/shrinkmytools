@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5XT72H0KV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C5XT72H0KV');
+</script>
+<title>Free Favicon Generator — All Sizes from One Image</title>
+<meta name="description" content="Generate every favicon size you need — 16x16 to 512x512, plus apple-touch-icon — from one image, instantly in your browser. Free, no signup.">
+<link rel="canonical" href="https://shrinkmytools.com/favicon-generator.html">
+<meta property="og:title" content="Free Favicon Generator">
+<meta property="og:description" content="Generate every favicon size you need from one image, instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shrinkmytools.com/favicon-generator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Favicon Generator",
+  "url": "https://shrinkmytools.com/favicon-generator.html",
+  "description": "Generate every favicon size you need — 16x16 to 512x512, plus apple-touch-icon — from one image, instantly in your browser. Free, no signup.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{
+    --bg:#141517; --bg2:#1a1b1e; --panel:#1c1d20; --panel2:#232427; --border:#302f33;
+    --text:#eeeef0; --muted:#9b9ba1; --accent:#6d8bff; --accent2:#8f6dff;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#eeeef0; --bg2:#e9e9eb; --panel:#ffffff; --panel2:#f5f5f6; --border:#dcdce0;
+      --text:#1c1c1f; --muted:#6b6b72; --accent:#4f6bff; --accent2:#7b4fff;
+      --shadow: 0 10px 30px -12px rgba(30,30,35,0.15);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(127,127,140,0.16) 1px, transparent 0),
+      radial-gradient(1100px 600px at 50% -12%, rgba(127,127,140,0.10), transparent 60%);
+    background-size: 26px 26px, 100% 100%;
+    color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .back{ display:block; max-width:1100px; margin:0 auto; padding:24px 20px 0; font-size:0.85rem; color:var(--muted); text-decoration:none; }
+  .back:hover{ color:var(--text); }
+  header{ text-align:center; padding:20px 20px 20px; }
+  header h1{
+    margin:0 0 12px; font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.02em;
+    background:linear-gradient(135deg, var(--text) 20%, var(--accent) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p{ margin:0 auto; color:var(--muted); max-width:520px; line-height:1.5; }
+  .layout{ max-width:900px; margin:0 auto; padding:20px; display:grid; grid-template-columns:1fr; gap:22px; }
+  .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+  #dropzone{
+    border:2px dashed var(--border); border-radius:14px; padding:44px 20px; text-align:center;
+    cursor:pointer; transition:.2s ease; color:var(--muted); background:var(--panel2);
+  }
+  #dropzone:hover{ border-color:var(--accent); }
+  #dropzone.drag{ border-color:var(--accent); background:rgba(109,139,255,0.08); color:var(--text); }
+  #dropzone .icon{ font-size:2rem; display:block; margin-bottom:8px; }
+  #dropzone strong{ color:var(--text); }
+  input[type=file]{ display:none; }
+  .btn{
+    background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border:none;
+    padding:10px 20px; border-radius:9px; font-size:0.88rem; cursor:pointer; font-weight:700;
+    box-shadow:0 6px 16px -6px rgba(109,139,255,0.55);
+  }
+  .btn:hover{ filter:brightness(1.08); }
+  .btn.secondary{ background:var(--panel2); border:1px solid var(--border); color:var(--text); box-shadow:none; }
+  .actions{ display:flex; gap:10px; margin-top:20px; }
+  .icon-grid{ margin-top:20px; display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:14px; }
+  .icon-card{ border:1px solid var(--border); border-radius:12px; padding:14px; text-align:center; background:var(--panel2); }
+  .icon-card img{ background:repeating-conic-gradient(#00000012 0% 25%, transparent 0% 50%) 50%/12px 12px; border-radius:6px; }
+  .icon-card .size-label{ font-size:0.78rem; color:var(--muted); margin:8px 0; }
+  .icon-card .btn{ width:100%; padding:7px; font-size:0.78rem; }
+  .snippet{
+    margin-top:20px; background:var(--bg2); border:1px solid var(--border); border-radius:10px;
+    padding:16px; font-family:'SF Mono',Consolas,Monaco,monospace; font-size:0.82rem; white-space:pre-wrap; word-break:break-all;
+  }
+  .content-section{ margin-top:6px; }
+  .content-section h2{ font-size:1.25rem; margin:0 0 14px; }
+  .content-section p, .content-section li{ color:var(--muted); font-size:0.93rem; line-height:1.7; }
+  .content-section ul{ margin:0 0 14px; padding-left:22px; }
+  .content-section strong{ color:var(--text); }
+  footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
+  footer a{ color:inherit; }
+</style>
+</head>
+<body>
+
+<a class="back" href="/">&larr; All tools</a>
+
+<header>
+  <h1>Favicon Generator</h1>
+  <p>Upload one image, get every favicon size a modern site needs — instantly, nothing uploaded.</p>
+</header>
+
+<div class="layout">
+  <div class="card">
+    <div id="dropzone">
+      <span class="icon">🖼️</span>
+      <strong>Click to choose an image</strong> or drag &amp; drop it here<br>
+      <span style="font-size:0.78rem;">A square image works best — logos and simple graphics ideal</span>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+    <div class="actions">
+      <button class="btn" id="generateBtn" disabled>Generate Favicons</button>
+      <button class="btn secondary" id="downloadAllBtn" disabled>Download All</button>
+      <button class="btn secondary" id="clearBtn" disabled>Clear</button>
+    </div>
+    <div class="icon-grid" id="iconGrid"></div>
+    <div class="snippet" id="htmlSnippet" style="display:none;"></div>
+  </div>
+
+  <div class="card content-section">
+    <h2>About Favicon Sizes</h2>
+    <p>Different platforms and devices request different icon sizes — having them all ready avoids blurry or missing icons.</p>
+    <ul>
+      <li><strong>16×16 / 32×32</strong> — classic browser tab favicon</li>
+      <li><strong>48×48</strong> — Windows site shortcuts</li>
+      <li><strong>180×180</strong> — Apple touch icon (iOS home screen)</li>
+      <li><strong>192×192</strong> — Android home screen / PWA icon</li>
+      <li><strong>512×512</strong> — PWA splash screens and app stores</li>
+    </ul>
+    <p>Download each size individually, or all at once, then paste the generated HTML snippet into your site's <code>&lt;head&gt;</code>.</p>
+  </div>
+</div>
+
+<footer>
+  Free, private, browser-based tools.<br>
+  <a href="/about.html">About</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+</footer>
+
+<script>
+(function(){
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const generateBtn = document.getElementById('generateBtn');
+  const downloadAllBtn = document.getElementById('downloadAllBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const iconGrid = document.getElementById('iconGrid');
+  const htmlSnippet = document.getElementById('htmlSnippet');
+
+  const SIZES = [16, 32, 48, 180, 192, 512];
+  let currentFile = null;
+  let generated = [];
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
+  dropzone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropzone.classList.remove('drag');
+    const f = Array.from(e.dataTransfer.files).find(f => f.type.startsWith('image/'));
+    if (f) selectFile(f);
+  });
+  fileInput.addEventListener('change', () => { if (fileInput.files[0]) selectFile(fileInput.files[0]); });
+
+  function selectFile(file){
+    currentFile = file;
+    dropzone.querySelector('strong').textContent = file.name;
+    generateBtn.disabled = false;
+    clearBtn.disabled = false;
+  }
+
+  clearBtn.addEventListener('click', () => {
+    currentFile = null;
+    generated.forEach(g => URL.revokeObjectURL(g.url));
+    generated = [];
+    iconGrid.innerHTML = '';
+    htmlSnippet.style.display = 'none';
+    generateBtn.disabled = true;
+    clearBtn.disabled = true;
+    downloadAllBtn.disabled = true;
+    dropzone.querySelector('strong').textContent = 'Click to choose an image';
+    fileInput.value = '';
+  });
+
+  generateBtn.addEventListener('click', async () => {
+    if (!currentFile) return;
+    iconGrid.innerHTML = '';
+    generated.forEach(g => URL.revokeObjectURL(g.url));
+    generated = [];
+
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = e => { img.src = e.target.result; };
+    img.onload = async () => {
+      for (const size of SIZES) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size; canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        // Cover-fit: crop to square, centered
+        const srcSize = Math.min(img.width, img.height);
+        const sx = (img.width - srcSize) / 2;
+        const sy = (img.height - srcSize) / 2;
+        ctx.drawImage(img, sx, sy, srcSize, srcSize, 0, 0, size, size);
+
+        const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+        const url = URL.createObjectURL(blob);
+        const name = `favicon-${size}x${size}.png`;
+        generated.push({ name, url, size });
+        renderIcon(name, url, size);
+      }
+      buildSnippet();
+      downloadAllBtn.disabled = false;
+    };
+    reader.readAsDataURL(currentFile);
+  });
+
+  function renderIcon(name, url, size){
+    const card = document.createElement('div');
+    card.className = 'icon-card';
+    card.innerHTML = `
+      <img src="${url}" width="48" height="48" alt="${name}">
+      <div class="size-label">${size}×${size}</div>
+      <button class="btn download-one">Download</button>
+    `;
+    card.querySelector('.download-one').addEventListener('click', () => {
+      const a = document.createElement('a'); a.href = url; a.download = name; a.click();
+    });
+    iconGrid.appendChild(card);
+  }
+
+  function buildSnippet(){
+    htmlSnippet.style.display = 'block';
+    htmlSnippet.textContent =
+`<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">`;
+  }
+
+  downloadAllBtn.addEventListener('click', () => {
+    generated.forEach((g, i) => {
+      setTimeout(() => {
+        const a = document.createElement('a'); a.href = g.url; a.download = g.name; a.click();
+      }, i * 150);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

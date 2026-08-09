@@ -61,8 +61,11 @@
   }
   header p{ margin:0 auto; color:var(--muted); max-width:560px; line-height:1.5; }
   .layout{ max-width:1100px; margin:0 auto; padding:20px; }
+  .category{ margin-top:36px; }
+  .category:first-of-type{ margin-top:12px; }
+  .category > h2{ margin:0 0 16px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:0.8rem; }
   .tools-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-top:12px;
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;
   }
   .tool-card{
     background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px;
@@ -81,7 +84,7 @@
     background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:28px;
     box-shadow:var(--shadow); margin-top:22px;
   }
-  .card h2{ margin-top:0; font-size:1.2rem; }
+  .card > h2{ margin-top:0; font-size:1.2rem; }
   .card p{ color:var(--muted); font-size:0.92rem; line-height:1.7; }
   footer{ text-align:center; color:var(--muted); font-size:0.8rem; padding:36px 20px 56px; }
   footer a{ color:inherit; }
@@ -95,79 +98,137 @@
 </header>
 
 <div class="layout">
-  <div class="tools-grid">
-    <a class="tool-card" href="https://shrinkmypics.com/" rel="noopener">
-      <span class="icon">🖼️</span>
-      <h2>Image Resizer &amp; Converter</h2>
-      <p>Resize and convert images to WebP, JPG, or PNG instantly in your browser.</p>
-      <span class="tag">Shrink My Pics</span>
-    </a>
-    <a class="tool-card" href="qr-code-generator.html">
-      <span class="icon">🔳</span>
-      <h2>QR Code Generator</h2>
-      <p>Create a custom QR code from any link or text and download it instantly — free, no watermark.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="pdf-tools.html">
-      <span class="icon">📄</span>
-      <h2>PDF Merge, Split &amp; Compress</h2>
-      <p>Combine multiple PDFs, split one into pages, or shrink file size — all in your browser.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="json-formatter.html">
-      <span class="icon">🧩</span>
-      <h2>JSON Formatter &amp; Validator</h2>
-      <p>Beautify, minify, and validate JSON with precise error locations.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="word-counter.html">
-      <span class="icon">📝</span>
-      <h2>Word &amp; Character Counter</h2>
-      <p>Live word count, character count, sentences, and reading time as you type.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="case-converter.html">
-      <span class="icon">🔤</span>
-      <h2>Case Converter</h2>
-      <p>Convert text to UPPERCASE, camelCase, snake_case, kebab-case, and more.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="unit-converter.html">
-      <span class="icon">📏</span>
-      <h2>Unit Converter</h2>
-      <p>Convert length, weight, temperature, volume, and area units instantly.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="password-generator.html">
-      <span class="icon">🔐</span>
-      <h2>Password Generator</h2>
-      <p>Generate strong, random passwords with a real-time strength meter.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="hash-generator.html">
-      <span class="icon">#️⃣</span>
-      <h2>Hash Generator</h2>
-      <p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or a file.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="color-picker.html">
-      <span class="icon">🎨</span>
-      <h2>Color Picker &amp; Converter</h2>
-      <p>Pick a color, get HEX/RGB/HSL instantly, plus shades and matching colors.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="loan-mortgage-calculator.html">
-      <span class="icon">🏠</span>
-      <h2>Loan &amp; Mortgage Calculator</h2>
-      <p>Estimate monthly payments, total interest, and a full amortization schedule.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
-    <a class="tool-card" href="lorem-ipsum-generator.html">
-      <span class="icon">📄</span>
-      <h2>Lorem Ipsum Generator</h2>
-      <p>Generate placeholder text by paragraphs, sentences, or words.</p>
-      <span class="tag">Free · No signup</span>
-    </a>
+
+  <div class="category">
+    <h2>Image Tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="https://shrinkmypics.com/" rel="noopener">
+        <span class="icon">🖼️</span>
+        <h2>Image Resizer &amp; Converter</h2>
+        <p>Resize and convert images to WebP, JPG, or PNG instantly in your browser.</p>
+        <span class="tag">Shrink My Pics</span>
+      </a>
+      <a class="tool-card" href="heic-converter.html">
+        <span class="icon">📱</span>
+        <h2>HEIC to JPG/PNG Converter</h2>
+        <p>Convert iPhone HEIC/HEIF photos to JPG or PNG — batch supported.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="favicon-generator.html">
+        <span class="icon">🧿</span>
+        <h2>Favicon Generator</h2>
+        <p>Generate every favicon size you need — 16×16 to 512×512 — from one image.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="watermark-adder.html">
+        <span class="icon">💧</span>
+        <h2>Watermark Adder</h2>
+        <p>Add a text watermark to one or many photos at once, with tiling and position control.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>Developer Tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="json-formatter.html">
+        <span class="icon">🧩</span>
+        <h2>JSON Formatter &amp; Validator</h2>
+        <p>Beautify, minify, and validate JSON with precise error locations.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="hash-generator.html">
+        <span class="icon">#️⃣</span>
+        <h2>Hash Generator</h2>
+        <p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text or a file.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="case-converter.html">
+        <span class="icon">🔤</span>
+        <h2>Case Converter</h2>
+        <p>Convert text to UPPERCASE, camelCase, snake_case, kebab-case, and more.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>Calculators &amp; Converters</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="unit-converter.html">
+        <span class="icon">📏</span>
+        <h2>Unit Converter</h2>
+        <p>Convert length, weight, temperature, volume, and area units instantly.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="loan-mortgage-calculator.html">
+        <span class="icon">🏠</span>
+        <h2>Loan &amp; Mortgage Calculator</h2>
+        <p>Estimate monthly payments, total interest, and a full amortization schedule.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="bmi-calculator.html">
+        <span class="icon">⚖️</span>
+        <h2>BMI Calculator</h2>
+        <p>Calculate Body Mass Index using metric or imperial units.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="percentage-calculator.html">
+        <span class="icon">💯</span>
+        <h2>Percentage Calculator</h2>
+        <p>Percentages, percentage change, increase and decrease — all in one place.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="age-calculator.html">
+        <span class="icon">🎂</span>
+        <h2>Age Calculator</h2>
+        <p>Exact age in years, months, and days, or days until any future date.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>Text, Design &amp; Generators</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="qr-code-generator.html">
+        <span class="icon">🔳</span>
+        <h2>QR Code Generator</h2>
+        <p>Create a custom QR code from any link or text and download it instantly — free, no watermark.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="pdf-tools.html">
+        <span class="icon">📄</span>
+        <h2>PDF Merge, Split &amp; Compress</h2>
+        <p>Combine multiple PDFs, split one into pages, or shrink file size — all in your browser.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="icon">📝</span>
+        <h2>Word &amp; Character Counter</h2>
+        <p>Live word count, character count, sentences, and reading time as you type.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="icon">🔐</span>
+        <h2>Password Generator</h2>
+        <p>Generate strong, random passwords with a real-time strength meter.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="icon">🎨</span>
+        <h2>Color Picker &amp; Converter</h2>
+        <p>Pick a color, get HEX/RGB/HSL instantly, plus shades and matching colors.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+      <a class="tool-card" href="lorem-ipsum-generator.html">
+        <span class="icon">📄</span>
+        <h2>Lorem Ipsum Generator</h2>
+        <p>Generate placeholder text by paragraphs, sentences, or words.</p>
+        <span class="tag">Free · No signup</span>
+      </a>
+    </div>
   </div>
 
   <div class="card">
