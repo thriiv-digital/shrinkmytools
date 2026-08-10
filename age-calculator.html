@@ -222,6 +222,9 @@
   const defaultBirth = new Date(today.getFullYear() - 25, today.getMonth(), today.getDate());
   birthDate.value = defaultBirth.toISOString().slice(0,10);
 
+  let tracked = false;
+  function trackUse(){ if (!tracked) { tracked = true; if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'age-calculator', action: 'calculate' }); } }
+
   function calculate(){
     if (!birthDate.value || !targetDate.value) return;
     const start = new Date(birthDate.value + 'T00:00:00');
@@ -260,8 +263,8 @@
     document.getElementById('resNextBday').textContent = daysToNext;
   }
 
-  birthDate.addEventListener('input', calculate);
-  targetDate.addEventListener('input', calculate);
+  birthDate.addEventListener('input', () => { calculate(); trackUse(); });
+  targetDate.addEventListener('input', () => { calculate(); trackUse(); });
   calculate();
 })();
 </script>

@@ -270,6 +270,8 @@
   const swapBtn = document.getElementById('swapBtn');
 
   let currentCategory = 'length';
+  let tracked = false;
+  function trackUse(){ if (!tracked) { tracked = true; if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'unit-converter', action: 'convert' }); } }
 
   function populateUnits(category){
     const cat = categories[category];
@@ -329,7 +331,7 @@
     convert();
   });
 
-  [fromValue, fromUnit, toUnit].forEach(el => el.addEventListener('input', convert));
+  [fromValue, fromUnit, toUnit].forEach(el => el.addEventListener('input', () => { convert(); trackUse(); }));
 
   populateUnits(currentCategory);
   convert();

@@ -405,6 +405,7 @@
 
     status.textContent = `Watermarked ${processed.length} of ${files.length} image${files.length===1?'':'s'}.`;
     status.className = 'status good';
+    if (processed.length > 0 && typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'watermark-adder', action: 'apply', value: processed.length });
     applyBtn.disabled = false;
     downloadAllBtn.disabled = processed.length === 0;
   });

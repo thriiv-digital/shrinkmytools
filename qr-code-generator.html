@@ -362,6 +362,7 @@
       a.href = URL.createObjectURL(blob);
       a.download = 'qr-code.png';
       a.click();
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'qr-code-generator', action: 'download_png' });
     }, 'image/png');
   });
 
@@ -372,6 +373,7 @@
     a.href = URL.createObjectURL(blob);
     a.download = 'qr-code.svg';
     a.click();
+    if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'qr-code-generator', action: 'download_svg' });
   });
 
   render();

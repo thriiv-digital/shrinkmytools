@@ -261,7 +261,10 @@
   document.querySelectorAll('.case-grid .btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const fn = converters[btn.dataset.case];
-      if (fn) input.value = fn(input.value);
+      if (fn) {
+        input.value = fn(input.value);
+        if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'case-converter', action: btn.dataset.case });
+      }
     });
   });
 

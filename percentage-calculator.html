@@ -256,11 +256,14 @@
     document.getElementById('p5result').textContent = fmt(a * (1 - b/100));
   }
 
-  ['p1a','p1b'].forEach(id => document.getElementById(id).addEventListener('input', calc1));
-  ['p2a','p2b'].forEach(id => document.getElementById(id).addEventListener('input', calc2));
-  ['p3a','p3b'].forEach(id => document.getElementById(id).addEventListener('input', calc3));
-  ['p4a','p4b'].forEach(id => document.getElementById(id).addEventListener('input', calc4));
-  ['p5a','p5b'].forEach(id => document.getElementById(id).addEventListener('input', calc5));
+  let tracked = false;
+  function trackUse(){ if (!tracked) { tracked = true; if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'percentage-calculator', action: 'calculate' }); } }
+
+  ['p1a','p1b'].forEach(id => document.getElementById(id).addEventListener('input', () => { calc1(); trackUse(); }));
+  ['p2a','p2b'].forEach(id => document.getElementById(id).addEventListener('input', () => { calc2(); trackUse(); }));
+  ['p3a','p3b'].forEach(id => document.getElementById(id).addEventListener('input', () => { calc3(); trackUse(); }));
+  ['p4a','p4b'].forEach(id => document.getElementById(id).addEventListener('input', () => { calc4(); trackUse(); }));
+  ['p5a','p5b'].forEach(id => document.getElementById(id).addEventListener('input', () => { calc5(); trackUse(); }));
 
   calc1(); calc2(); calc3(); calc4(); calc5();
 })();

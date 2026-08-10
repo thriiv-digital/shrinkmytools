@@ -274,7 +274,10 @@
     document.getElementById('output').value = result;
   }
 
-  document.getElementById('generateBtn').addEventListener('click', generate);
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    generate();
+    if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'lorem-ipsum-generator', action: 'generate' });
+  });
   document.getElementById('copyBtn').addEventListener('click', () => {
     navigator.clipboard.writeText(document.getElementById('output').value);
   });

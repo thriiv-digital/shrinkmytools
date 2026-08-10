@@ -277,6 +277,9 @@
     return '$' + Math.round(n).toLocaleString();
   }
 
+  let tracked = false;
+  function trackUse(){ if (!tracked) { tracked = true; if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'loan-mortgage-calculator', action: 'calculate' }); } }
+
   function calculate(){
     const P = parseFloat(loanAmount.value) || 0;
     const annualRate = parseFloat(interestRate.value) || 0;
@@ -330,7 +333,7 @@
     `).join('');
   }
 
-  [loanAmount, interestRate, loanTerm, extraPayment].forEach(el => el.addEventListener('input', calculate));
+  [loanAmount, interestRate, loanTerm, extraPayment].forEach(el => el.addEventListener('input', () => { calculate(); trackUse(); }));
   calculate();
 })();
 </script>

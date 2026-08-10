@@ -301,6 +301,7 @@
       }
       buildSnippet();
       downloadAllBtn.disabled = false;
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'favicon-generator', action: 'generate' });
     };
     reader.readAsDataURL(currentFile);
   });

@@ -319,6 +319,7 @@
 
     status.textContent = `Converted ${successCount} of ${files.length} file${files.length===1?'':'s'}.`;
     status.className = 'status good';
+    if (successCount > 0 && typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'heic-converter', action: 'convert', value: successCount });
     convertBtn.disabled = false;
     downloadAllBtn.disabled = converted.length === 0;
   });

@@ -267,6 +267,9 @@
     });
   });
 
+  let tracked = false;
+  function trackUse(){ if (!tracked) { tracked = true; if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'bmi-calculator', action: 'calculate' }); } }
+
   function calculate(){
     let bmi;
     if (unit === 'metric') {
@@ -295,7 +298,7 @@
     document.getElementById('bmiValue').style.color = color;
   }
 
-  document.querySelectorAll('input[type=number]').forEach(el => el.addEventListener('input', calculate));
+  document.querySelectorAll('input[type=number]').forEach(el => el.addEventListener('input', () => { calculate(); trackUse(); }));
   calculate();
 })();
 </script>

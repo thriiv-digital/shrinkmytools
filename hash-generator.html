@@ -358,7 +358,10 @@ function md5(bytes){
         </div>
       `).join('');
       hashList.querySelectorAll('.copy-hash').forEach(btn => {
-        btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.value));
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(btn.dataset.value);
+          if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'hash-generator', action: 'copy' });
+        });
       });
     });
   }

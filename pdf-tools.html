@@ -523,6 +523,7 @@
       a.click();
       mergeStatus.textContent = `Done — merged ${mergeFiles.length} files (${formatBytes(outBytes.length)}).`;
       mergeStatus.className = 'status good';
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'pdf-tools', action: 'merge', value: mergeFiles.length });
     } catch (err) {
       console.error(err);
       mergeStatus.textContent = 'Something went wrong merging these files — make sure they\'re valid, non-password-protected PDFs.';
@@ -643,6 +644,7 @@
         splitStatus.textContent = `Done — extracted ${indices.length} page${indices.length === 1 ? '' : 's'} (${formatBytes(outBytes.length)}).`;
       }
       splitStatus.className = 'status good';
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'pdf-tools', action: mode === 'all' ? 'split_all' : 'split_range' });
     } catch (err) {
       console.error(err);
       splitStatus.textContent = 'Something went wrong splitting this file.';
@@ -774,6 +776,7 @@
         ? `Done — ${formatBytes(originalSize)} → ${formatBytes(outBytes.length)} (−${pct}%).`
         : `Done — ${formatBytes(originalSize)} → ${formatBytes(outBytes.length)}. This PDF didn't shrink — it's likely already text-based with few images, so rasterizing adds overhead. Try Merge/Split instead to keep it as-is.`;
       compressStatus.className = 'status good';
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'pdf-tools', action: 'compress' });
     } catch (err) {
       console.error(err);
       compressStatus.textContent = 'Something went wrong compressing this file — make sure it\'s a valid, non-password-protected PDF.';

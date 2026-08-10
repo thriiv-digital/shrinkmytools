@@ -331,6 +331,7 @@
   document.querySelectorAll('.icon-btn.copy').forEach(btn => {
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(document.getElementById(btn.dataset.target).textContent);
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'color-picker', action: 'copy' });
     });
   });
 

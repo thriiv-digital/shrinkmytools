@@ -249,7 +249,11 @@
     statReadTime.textContent = readSeconds < 60 ? `${readSeconds}s` : `${Math.floor(readSeconds/60)}m ${readSeconds%60}s`;
   }
 
-  input.addEventListener('input', update);
+  let tracked = false;
+  input.addEventListener('input', () => {
+    update();
+    if (!tracked) { tracked = true; if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'word-counter', action: 'type' }); }
+  });
   update();
 })();
 </script>

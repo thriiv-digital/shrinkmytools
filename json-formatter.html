@@ -255,6 +255,7 @@
       const parsed = JSON.parse(input.value);
       input.value = JSON.stringify(parsed, null, getIndent());
       showStatus('Valid JSON — formatted successfully.', true);
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'json-formatter', action: 'format' });
     } catch (err) {
       showStatus('Invalid JSON: ' + err.message, false);
     }
@@ -265,6 +266,7 @@
       const parsed = JSON.parse(input.value);
       input.value = JSON.stringify(parsed);
       showStatus('Valid JSON — minified successfully.', true);
+      if (typeof gtag === 'function') gtag('event', 'tool_action', { tool_name: 'json-formatter', action: 'minify' });
     } catch (err) {
       showStatus('Invalid JSON: ' + err.message, false);
     }
